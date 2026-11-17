@@ -24,7 +24,7 @@ st.set_page_config(
     page_title="OLA Mobility OS | Executive BI & Telemetry",
     page_icon="⚡",
     layout="wide",
-    initial_sidebar_state="expanded"
+    initial_sidebar_state="collapsed"
 )
 
 # -----------------------------------------------------------------------------
@@ -340,10 +340,47 @@ st.markdown("""
         letter-spacing: 0.6px;
     }
 
-    /* Sidebar Styling */
-    section[data-testid="stSidebar"] {
-        background: #090E17 !important;
-        border-right: 1px solid var(--card-border) !important;
+    /* Hide sidebar as filters are moved to the top */
+    [data-testid="stSidebar"] {
+        display: none !important;
+    }
+    
+    /* Top Filter Console Deck */
+    .top-filter-card {
+        background: linear-gradient(145deg, rgba(23, 32, 54, 0.7) 0%, rgba(15, 23, 42, 0.85) 100%);
+        border: 1px solid var(--card-border);
+        border-radius: 14px;
+        padding: 16px 20px 10px 20px;
+        margin-bottom: 22px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+        backdrop-filter: blur(12px);
+    }
+    .filter-header-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 12px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .filter-title {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.88rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.6px;
+        color: #FFFFFF;
+    }
+    .filter-count-badge {
+        background: rgba(178, 255, 0, 0.12);
+        color: var(--ola-lime);
+        border: 1px solid rgba(178, 255, 0, 0.25);
+        font-size: 0.75rem;
+        font-weight: 700;
+        padding: 3px 10px;
+        border-radius: 6px;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -412,109 +449,7 @@ def apply_chart_style(fig, height=380):
 
 
 # -----------------------------------------------------------------------------
-# 5. SIDEBAR CONTROLS & BRANDING
-# -----------------------------------------------------------------------------
-with st.sidebar:
-    st.markdown("""
-    <div style="padding: 12px 4px 20px 4px;">
-        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 6px;">
-            <div style="background: #B2FF00; color: #080B11; width: 38px; height: 38px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; font-weight: 900; box-shadow: 0 0 16px rgba(178, 255, 0, 0.4);">
-                ⚡
-            </div>
-            <div>
-                <h2 style="color: #FFFFFF; margin: 0; font-size: 1.4rem; font-weight: 800; letter-spacing: -0.5px;">OLA <span style="color: #B2FF00;">INSIGHTS</span></h2>
-                <div style="color: #64748B; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.8px;">Mobility Intelligence OS</div>
-            </div>
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
-    
-    st.markdown("##### 🎛️ Dynamic Slicers & Filters")
-    
-    # 1. Date Range
-    min_date = master_df['Ride_Date'].min()
-    max_date = master_df['Ride_Date'].max()
-    
-    selected_dates = st.date_input(
-        "📅 Date Window",
-        value=(min_date, max_date),
-        min_value=min_date,
-        max_value=max_date,
-        help="Filter analytics across any custom date range in July 2024"
-    )
-    
-    # 2. Vehicle Categories
-    all_vehicles = sorted(master_df['Vehicle_Type'].dropna().unique().tolist())
-    selected_vehicles = st.multiselect(
-        "🚗 Fleet Categories",
-        options=all_vehicles,
-        default=all_vehicles
-    )
-    
-    # 3. Booking Status
-    all_statuses = sorted(master_df['Booking_Status'].dropna().unique().tolist())
-    selected_statuses = st.multiselect(
-        "🎯 Trip Status",
-        options=all_statuses,
-        default=all_statuses
-    )
-    
-    # 4. Payment Gateway
-    payment_options = sorted(master_df['Payment_Method'].dropna().unique().tolist())
-    selected_payments = st.multiselect(
-        "💳 Payment Gateways",
-        options=payment_options,
-        default=payment_options
-    )
-    
-    # Vehicle Class Quick Guide
-    st.markdown("---")
-    st.markdown("""
-    <div style="font-size: 0.78rem; color: #64748B; margin-bottom: 8px; text-transform: uppercase; font-weight: 700; letter-spacing: 0.6px;">
-        Active Fleet Classes (7)
-    </div>
-    <div style="display: flex; flex-wrap: wrap; gap: 6px;">
-        <span style="background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(255,255,255,0.06); font-size: 0.75rem; padding: 3px 8px; border-radius: 6px; color: #E2E8F0;">🛺 Auto</span>
-        <span style="background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(255,255,255,0.06); font-size: 0.75rem; padding: 3px 8px; border-radius: 6px; color: #E2E8F0;">🏍️ Bike</span>
-        <span style="background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(255,255,255,0.06); font-size: 0.75rem; padding: 3px 8px; border-radius: 6px; color: #E2E8F0;">⚡ eBike</span>
-        <span style="background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(255,255,255,0.06); font-size: 0.75rem; padding: 3px 8px; border-radius: 6px; color: #E2E8F0;">🚗 Mini</span>
-        <span style="background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(255,255,255,0.06); font-size: 0.75rem; padding: 3px 8px; border-radius: 6px; color: #E2E8F0;">🚘 Sedan</span>
-        <span style="background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(255,255,255,0.06); font-size: 0.75rem; padding: 3px 8px; border-radius: 6px; color: #E2E8F0;">🚙 SUV</span>
-        <span style="background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(255,255,255,0.06); font-size: 0.75rem; padding: 3px 8px; border-radius: 6px; color: #E2E8F0;">✨ Plus</span>
-    </div>
-    """, unsafe_allow_html=True)
-    
-    st.markdown("---")
-    st.markdown("""
-    <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); border-radius: 10px; padding: 12px; font-size: 0.75rem; color: #94A3B8; line-height: 1.6;">
-        <b>Engine:</b> SQLite 3 B-Tree<br>
-        <b>Volume:</b> 103,024 Records<br>
-        <b>Scope:</b> Bengaluru Urban Hub<br>
-        <b>Evaluation:</b> Capstone Ready
-    </div>
-    """, unsafe_allow_html=True)
-
-
-# -----------------------------------------------------------------------------
-# 6. FILTER APPLICATION
-# -----------------------------------------------------------------------------
-filtered_df = master_df.copy()
-
-if isinstance(selected_dates, (tuple, list)) and len(selected_dates) == 2:
-    s_date, e_date = selected_dates
-    filtered_df = filtered_df[(filtered_df['Ride_Date'] >= s_date) & (filtered_df['Ride_Date'] <= e_date)]
-elif isinstance(selected_dates, (tuple, list)) and len(selected_dates) == 1:
-    filtered_df = filtered_df[filtered_df['Ride_Date'] == selected_dates[0]]
-
-if selected_vehicles:
-    filtered_df = filtered_df[filtered_df['Vehicle_Type'].isin(selected_vehicles)]
-
-if selected_statuses:
-    filtered_df = filtered_df[filtered_df['Booking_Status'].isin(selected_statuses)]
-
-
-# -----------------------------------------------------------------------------
-# 7. HERO HEADER BANNER
+# 5. HERO HEADER BANNER
 # -----------------------------------------------------------------------------
 st.markdown("""
 <div class="hero-container">
@@ -537,6 +472,97 @@ st.markdown("""
     </div>
 </div>
 """, unsafe_allow_html=True)
+
+
+# -----------------------------------------------------------------------------
+# 6. TOP FILTER CONSOLE DECK (HORIZONTAL FILTERS)
+# -----------------------------------------------------------------------------
+st.markdown("""
+<div class="top-filter-card">
+    <div class="filter-header-row">
+        <div class="filter-title">
+            <span>🎛️</span> Global Telemetry Filter Deck
+        </div>
+        <span class="filter-count-badge">Active Scope: Bengaluru Metro</span>
+    </div>
+</div>
+""", unsafe_allow_html=True)
+
+f_col1, f_col2, f_col3, f_col4 = st.columns([3, 3, 3, 3])
+
+min_date = master_df['Ride_Date'].min()
+max_date = master_df['Ride_Date'].max()
+all_vehicles = sorted(master_df['Vehicle_Type'].dropna().unique().tolist())
+all_statuses = sorted(master_df['Booking_Status'].dropna().unique().tolist())
+payment_options = sorted(master_df['Payment_Method'].dropna().unique().tolist())
+
+with f_col1:
+    selected_dates = st.date_input(
+        "📅 Date Window",
+        value=(min_date, max_date),
+        min_value=min_date,
+        max_value=max_date,
+        help="Filter analytics across any custom date range in July 2024"
+    )
+
+with f_col2:
+    selected_vehicles = st.multiselect(
+        "🚗 Fleet Categories",
+        options=all_vehicles,
+        default=all_vehicles,
+        help="Select one or multiple vehicle types"
+    )
+
+with f_col3:
+    selected_statuses = st.multiselect(
+        "🎯 Trip Status",
+        options=all_statuses,
+        default=all_statuses,
+        help="Filter by Success, Canceled, or Driver Not Found"
+    )
+
+with f_col4:
+    selected_payments = st.multiselect(
+        "💳 Payment Gateways",
+        options=payment_options,
+        default=payment_options,
+        help="Filter by payment method for completed trips"
+    )
+
+# Quick Fleet Category Tags Ribbon
+st.markdown("""
+<div style="display: flex; align-items: center; gap: 8px; margin-top: -6px; margin-bottom: 22px; flex-wrap: wrap;">
+    <span style="font-size: 0.72rem; color: #64748B; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">Active Fleet Classes:</span>
+    <span style="background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(255,255,255,0.06); font-size: 0.72rem; padding: 2px 8px; border-radius: 6px; color: #E2E8F0;">🛺 Auto</span>
+    <span style="background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(255,255,255,0.06); font-size: 0.72rem; padding: 2px 8px; border-radius: 6px; color: #E2E8F0;">🏍️ Bike</span>
+    <span style="background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(255,255,255,0.06); font-size: 0.72rem; padding: 2px 8px; border-radius: 6px; color: #E2E8F0;">⚡ eBike</span>
+    <span style="background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(255,255,255,0.06); font-size: 0.72rem; padding: 2px 8px; border-radius: 6px; color: #E2E8F0;">🚗 Mini</span>
+    <span style="background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(255,255,255,0.06); font-size: 0.72rem; padding: 2px 8px; border-radius: 6px; color: #E2E8F0;">🚘 Prime Sedan</span>
+    <span style="background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(255,255,255,0.06); font-size: 0.72rem; padding: 2px 8px; border-radius: 6px; color: #E2E8F0;">🚙 Prime SUV</span>
+    <span style="background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(255,255,255,0.06); font-size: 0.72rem; padding: 2px 8px; border-radius: 6px; color: #E2E8F0;">✨ Prime Plus</span>
+</div>
+""", unsafe_allow_html=True)
+
+
+# -----------------------------------------------------------------------------
+# 7. FILTER APPLICATION
+# -----------------------------------------------------------------------------
+filtered_df = master_df.copy()
+
+if isinstance(selected_dates, (tuple, list)) and len(selected_dates) == 2:
+    s_date, e_date = selected_dates
+    filtered_df = filtered_df[(filtered_df['Ride_Date'] >= s_date) & (filtered_df['Ride_Date'] <= e_date)]
+elif isinstance(selected_dates, (tuple, list)) and len(selected_dates) == 1:
+    filtered_df = filtered_df[filtered_df['Ride_Date'] == selected_dates[0]]
+
+if selected_vehicles:
+    filtered_df = filtered_df[filtered_df['Vehicle_Type'].isin(selected_vehicles)]
+
+if selected_statuses:
+    filtered_df = filtered_df[filtered_df['Booking_Status'].isin(selected_statuses)]
+
+if selected_payments and len(selected_payments) < len(payment_options):
+    filtered_df = filtered_df[filtered_df['Payment_Method'].isin(selected_payments) | filtered_df['Payment_Method'].isna()]
 
 
 # -----------------------------------------------------------------------------
