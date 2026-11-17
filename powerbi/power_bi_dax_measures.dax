@@ -1,0 +1,172 @@
+/* ==============================================================================
+   OLA RIDE INSIGHTS - POWER BI DAX FORMULAS & MEASURES
+   Domain: Ride-Sharing & Mobility Analytics
+   Compatibility: Power BI Desktop, DAX Studio, Tabular Editor
+============================================================================== */
+
+// ------------------------------------------------------------------------------
+// 1. CORE VOLUME & BOOKING METRICS
+// ------------------------------------------------------------------------------
+
+Total Bookings = 
+COUNTROWS('rides')
+
+Successful Bookings = 
+CALCULATE(
+    COUNTROWS('rides'),
+    'rides'[Booking_Status] = "Success"
+)
+
+Success Rate (%) = 
+DIVIDE([Successful Bookings], [Total Bookings], 0) * 100
+
+Canceled by Customer = 
+CALCULATE(
+    COUNTROWS('rides'),
+    'rides'[Booking_Status] = "Canceled by Customer"
+)
+
+Customer Cancellation Rate (%) = 
+DIVIDE([Canceled by Customer], [Total Bookings], 0) * 100
+
+Canceled by Driver = 
+CALCULATE(
+    COUNTROWS('rides'),
+    'rides'[Booking_Status] = "Canceled by Driver"
+)
+
+Driver Cancellation Rate (%) = 
+DIVIDE([Canceled by Driver], [Total Bookings], 0) * 100
+
+Driver Not Found = 
+CALCULATE(
+    COUNTROWS('rides'),
+    'rides'[Booking_Status] = "Driver Not Found"
+)
+
+Total Cancellations = 
+[Canceled by Customer] + [Canceled by Driver]
+
+Overall Cancellation Rate (%) = 
+DIVIDE([Total Cancellations], [Total Bookings], 0) * 100
+
+Incomplete Rides = 
+CALCULATE(
+    COUNTROWS('rides'),
+    'rides'[Incomplete_Rides] = "Yes"
+)
+
+Incomplete Ride Rate (%) = 
+DIVIDE([Incomplete Rides], [Successful Bookings], 0) * 100
+
+
+// ------------------------------------------------------------------------------
+// 2. FINANCIAL & REVENUE METRICS
+// ------------------------------------------------------------------------------
+
+Total Revenue = 
+CALCULATE(
+    SUM('rides'[Booking_Value]),
+    'rides'[Booking_Status] = "Success"
+)
+
+Average Booking Value = 
+DIVIDE([Total Revenue], [Successful Bookings], 0)
+
+UPI Revenue = 
+CALCULATE(
+    SUM('rides'[Booking_Value]),
+    'rides'[Payment_Method] = "UPI",
+    'rides'[Booking_Status] = "Success"
+)
+
+Cash Revenue = 
+CALCULATE(
+    SUM('rides'[Booking_Value]),
+    'rides'[Payment_Method] = "Cash",
+    'rides'[Booking_Status] = "Success"
+)
+
+Card Revenue = 
+CALCULATE(
+    SUM('rides'[Booking_Value]),
+    'rides'[Payment_Method] IN {"Credit Card", "Debit Card"},
+    'rides'[Booking_Status] = "Success"
+)
+
+
+// ------------------------------------------------------------------------------
+// 3. OPERATIONAL & DISTANCE METRICS
+// ------------------------------------------------------------------------------
+
+Total Ride Distance = 
+SUM('rides'[Ride_Distance])
+
+Average Ride Distance = 
+AVERAGE('rides'[Ride_Distance])
+
+Average Successful Ride Distance = 
+CALCULATE(
+    AVERAGE('rides'[Ride_Distance]),
+    'rides'[Booking_Status] = "Success"
+)
+
+Average Vehicle Turnaround Time (V_TAT) = 
+AVERAGE('rides'[V_TAT])
+
+Average Customer Turnaround Time (C_TAT) = 
+AVERAGE('rides'[C_TAT])
+
+
+// ------------------------------------------------------------------------------
+// 4. RATINGS & QUALITY METRICS
+// ------------------------------------------------------------------------------
+
+Average Customer Rating = 
+AVERAGE('rides'[Customer_Rating])
+
+Average Driver Rating = 
+AVERAGE('rides'[Driver_Ratings])
+
+Rating Variance = 
+[Average Customer Rating] - [Average Driver Rating]
+
+High Rating Trips (>= 4.5) = 
+CALCULATE(
+    COUNTROWS('rides'),
+    'rides'[Customer_Rating] >= 4.5,
+    'rides'[Booking_Status] = "Success"
+)
+
+
+// ------------------------------------------------------------------------------
+// 5. CALCULATED COLUMNS (Add in Table 'rides')
+// ------------------------------------------------------------------------------
+
+Ride_Hour = 
+HOUR('rides'[Time])
+
+Time_Of_Day_Category = 
+SWITCH(
+    TRUE(),
+    'rides'[Ride_Hour] >= 6 && 'rides'[Ride_Hour] < 12, "Morning (06:00-11:59)",
+    'rides'[Ride_Hour] >= 12 && 'rides'[Ride_Hour] < 17, "Afternoon (12:00-16:59)",
+    'rides'[Ride_Hour] >= 17 && 'rides'[Ride_Hour] < 22, "Evening (17:00-21:59)",
+    "Night (22:00-05:59)"
+)
+
+Day_Type = 
+IF(
+    WEEKDAY('rides'[Date], 2) >= 6,
+    "Weekend",
+    "Weekday"
+)
+
+Distance_Band = 
+SWITCH(
+    TRUE(),
+    'rides'[Ride_Distance] <= 5, "Short (0-5 km)",
+    'rides'[Ride_Distance] <= 15, "Medium (6-15 km)",
+    'rides'[Ride_Distance] <= 30, "Long (16-30 km)",
+    "Extended (>30 km)"
+)
