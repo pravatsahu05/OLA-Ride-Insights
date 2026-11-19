@@ -2,8 +2,8 @@
 =============================================================================
 OLA RIDE INSIGHTS - ADVANCED MOBILITY CONTROL CENTER
 Theme: Dark Obsidian & Electric Volt Neon Lime (#D4FF00) matching Next-Gen Mobility UI
-Features: Unified container cards, responsive KPI metrics, circular performance gauges,
-day-of-week capsule charts, and dedicated one-line insights & business actions under every visual.
+Features: Clean, interactive dashboard without unclickable pseudo-buttons,
+flattened navigation for instant access, and dedicated one-line insights & business actions under every visual.
 =============================================================================
 """
 
@@ -42,7 +42,7 @@ st.markdown("""
         --card-bg: #15161C;
         --card-surface: #1B1D24;
         --card-border: rgba(255, 255, 255, 0.06);
-        --card-hover-border: rgba(212, 255, 0, 0.38);
+        --card-hover-border: rgba(212, 255, 0, 0.35);
         --text-white: #FFFFFF;
         --text-muted: #8E929E;
         --text-dim: #5F6370;
@@ -92,11 +92,6 @@ st.markdown("""
         padding: 20px 22px 18px 22px !important;
         margin-bottom: 20px !important;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35) !important;
-        transition: all 0.25s ease !important;
-    }
-    div[data-testid="stVerticalBlockBorderWrapper"]:hover {
-        border-color: var(--card-hover-border) !important;
-        box-shadow: 0 14px 36px rgba(0, 0, 0, 0.45), 0 0 20px rgba(212, 255, 0, 0.1) !important;
     }
 
     /* Header Nav Banner */
@@ -147,19 +142,6 @@ st.markdown("""
         letter-spacing: 0.8px;
         margin-top: 2px;
     }
-    .nav-status-pill {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        background: rgba(212, 255, 0, 0.1);
-        border: 1px solid rgba(212, 255, 0, 0.28);
-        color: var(--volt-lime);
-        font-size: 0.78rem;
-        font-weight: 800;
-        padding: 7px 18px;
-        border-radius: 30px;
-        letter-spacing: 0.5px;
-    }
     .live-dot {
         width: 8px;
         height: 8px;
@@ -175,33 +157,16 @@ st.markdown("""
     }
 
     /* Card Inside Elements */
-    .card-header-flex {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 2px;
-    }
     .card-title-text {
         font-size: 1.05rem;
         font-weight: 700;
         color: #FFFFFF;
-        display: flex;
-        align-items: center;
-        gap: 8px;
+        margin-bottom: 2px;
     }
     .card-subtitle-text {
         font-size: 0.82rem;
         color: var(--text-muted);
-        margin-bottom: 10px;
-    }
-    .kpi-mini-pill {
-        font-size: 0.72rem;
-        font-weight: 700;
-        padding: 3px 10px;
-        border-radius: 20px;
-        background: #1B1D24;
-        color: var(--text-muted);
-        border: 1px solid rgba(255, 255, 255, 0.05);
+        margin-bottom: 12px;
     }
 
     /* KPI Cards Styling */
@@ -210,20 +175,9 @@ st.markdown("""
         border: 1px solid var(--card-border);
         border-radius: 20px;
         padding: 18px 20px;
-        position: relative;
-        overflow: hidden;
-        transition: all 0.25s ease;
         box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
     }
-    .theme-kpi-card:hover {
-        transform: translateY(-3px);
-        border-color: var(--card-hover-border);
-        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4), 0 0 20px rgba(212, 255, 0, 0.15);
-    }
     .kpi-card-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
         margin-bottom: 8px;
     }
     .kpi-card-label {
@@ -315,11 +269,11 @@ st.markdown("""
         padding: 6px;
         border-radius: 16px;
         border: 1px solid var(--card-border);
-        margin-bottom: 16px;
+        margin-bottom: 18px;
     }
     .stTabs [data-baseweb="tab"] {
         border-radius: 12px !important;
-        padding: 10px 22px !important;
+        padding: 10px 20px !important;
         font-size: 0.88rem !important;
         font-weight: 700 !important;
         color: var(--text-muted) !important;
@@ -426,13 +380,9 @@ st.markdown("""
             <div class="brand-tagline">Bengaluru Urban Telemetry & Executive Business Intelligence</div>
         </div>
     </div>
-    <div style="display: flex; align-items: center; gap: 12px;">
-        <div class="nav-status-pill">
-            <span class="live-dot"></span> 103,024 BOOKINGS IN MEMORY
-        </div>
-        <div style="font-size: 0.78rem; color: #5F6370; background: #1B1D24; padding: 6px 14px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05);">
-            JULY 2024 (31 DAYS)
-        </div>
+    <div style="display: flex; align-items: center; gap: 8px; font-size: 0.8rem; color: #8E929E;">
+        <span class="live-dot"></span>
+        <span>103,024 Records Analyzed • July 2024</span>
     </div>
 </div>
 """, unsafe_allow_html=True)
@@ -494,20 +444,6 @@ with st.container(border=True):
             help="Filter by payment method for completed trips"
         )
 
-    # Active Fleet Category Tags
-    st.markdown("""
-    <div style="display: flex; align-items: center; gap: 8px; margin-top: 10px; flex-wrap: wrap;">
-        <span style="font-size: 0.72rem; color: #5F6370; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">Monitored Fleets:</span>
-        <span style="background: #1B1D24; border: 1px solid rgba(255,255,255,0.06); font-size: 0.72rem; padding: 2px 10px; border-radius: 20px; color: #E2E8F0;">🛺 Auto</span>
-        <span style="background: #1B1D24; border: 1px solid rgba(255,255,255,0.06); font-size: 0.72rem; padding: 2px 10px; border-radius: 20px; color: #E2E8F0;">🏍️ Bike</span>
-        <span style="background: #1B1D24; border: 1px solid rgba(255,255,255,0.06); font-size: 0.72rem; padding: 2px 10px; border-radius: 20px; color: #E2E8F0;">⚡ eBike</span>
-        <span style="background: #1B1D24; border: 1px solid rgba(255,255,255,0.06); font-size: 0.72rem; padding: 2px 10px; border-radius: 20px; color: #E2E8F0;">🚗 Mini</span>
-        <span style="background: #1B1D24; border: 1px solid rgba(255,255,255,0.06); font-size: 0.72rem; padding: 2px 10px; border-radius: 20px; color: #E2E8F0;">🚘 Prime Sedan</span>
-        <span style="background: #1B1D24; border: 1px solid rgba(255,255,255,0.06); font-size: 0.72rem; padding: 2px 10px; border-radius: 20px; color: #E2E8F0;">🚙 Prime SUV</span>
-        <span style="background: #1B1D24; border: 1px solid rgba(255,255,255,0.06); font-size: 0.72rem; padding: 2px 10px; border-radius: 20px; color: #E2E8F0;">✨ Prime Plus</span>
-    </div>
-    """, unsafe_allow_html=True)
-
 
 # -----------------------------------------------------------------------------
 # 7. FILTER APPLICATION
@@ -558,7 +494,6 @@ with kc1:
     <div class="theme-kpi-card">
         <div class="kpi-card-header">
             <span class="kpi-card-label">Total Demand</span>
-            <span class="kpi-mini-pill">July 2024</span>
         </div>
         <div class="kpi-card-num">{total_count:,}</div>
         <div class="kpi-card-sub">50 Bengaluru Hubs</div>
@@ -573,7 +508,6 @@ with kc2:
     <div class="theme-kpi-card">
         <div class="kpi-card-header">
             <span class="kpi-card-label">Fulfillment</span>
-            <span class="kpi-mini-pill" style="color: #D4FF00;">Target: 75%</span>
         </div>
         <div class="kpi-card-num" style="color: #D4FF00;">{success_pct:.1f}%</div>
         <div class="kpi-card-sub"><span style="color: #D4FF00; font-weight: 700;">{successful_count:,}</span> Completed</div>
@@ -588,7 +522,6 @@ with kc3:
     <div class="theme-kpi-card">
         <div class="kpi-card-header">
             <span class="kpi-card-label">Gross GMV</span>
-            <span class="kpi-mini-pill">INR</span>
         </div>
         <div class="kpi-card-num">₹{total_gross_rev/1e6:.2f}M</div>
         <div class="kpi-card-sub">Avg Fare: <b>₹{avg_ride_fare:.1f}</b></div>
@@ -603,7 +536,6 @@ with kc4:
     <div class="theme-kpi-card">
         <div class="kpi-card-header">
             <span class="kpi-card-label">Mean Distance</span>
-            <span class="kpi-mini-pill">KM</span>
         </div>
         <div class="kpi-card-num">{avg_ride_dist:.1f} <span style="font-size: 1rem; color: #8E929E;">km</span></div>
         <div class="kpi-card-sub">Citywide Commute</div>
@@ -618,7 +550,6 @@ with kc5:
     <div class="theme-kpi-card">
         <div class="kpi-card-header">
             <span class="kpi-card-label">Cancellations</span>
-            <span class="kpi-mini-pill" style="color: #FF3B56;">Alert</span>
         </div>
         <div class="kpi-card-num" style="color: #FF3B56;">{cancellation_pct:.1f}%</div>
         <div class="kpi-card-sub"><span style="color: #FF3B56; font-weight: 700;">{total_cancels:,}</span> Aborted</div>
@@ -633,7 +564,6 @@ with kc6:
     <div class="theme-kpi-card">
         <div class="kpi-card-header">
             <span class="kpi-card-label">Quality Score</span>
-            <span class="kpi-mini-pill">⭐ Star</span>
         </div>
         <div class="kpi-card-num">{avg_c_rating:.2f} <span style="font-size: 1rem; color: #8E929E;">/ 5</span></div>
         <div class="kpi-card-sub">Driver: <b>{avg_d_rating:.2f}</b></div>
@@ -647,765 +577,695 @@ st.markdown("<br>", unsafe_allow_html=True)
 
 
 # -----------------------------------------------------------------------------
-# 9. MAIN MULTI-VIEW WORKSPACE
+# 9. DIRECT, STREAMLINED NAVIGATION TABS (ALL TABS ARE FUNCTIONAL)
 # -----------------------------------------------------------------------------
-tab_pbi, tab_sql, tab_geo, tab_raw, tab_biz = st.tabs([
-    "📊 Power BI Analytics Suite (5 Views)",
-    "⚡ SQL Query Studio & Console",
-    "🗺️ Geospatial & Route Flow",
-    "🔍 Cleaned Data Explorer",
-    "💡 Strategic Executive Playbook"
+tab_overall, tab_veh, tab_rev, tab_canc, tab_rat, tab_sql, tab_geo, tab_raw = st.tabs([
+    "📊 Overall View",
+    "🚗 Vehicle Type View",
+    "💳 Revenue View",
+    "⚠️ Cancellation View",
+    "⭐ Ratings View",
+    "⚡ SQL Query Studio",
+    "🗺️ Geospatial Routes",
+    "🔍 Raw Data Explorer"
 ])
 
 
 # =============================================================================
-# TAB 1: POWER BI ANALYTICS SUITE (WITH INSIGHT & RECOMMENDATION UNDER EVERY GRAPH)
+# 1. OVERALL VIEW
 # =============================================================================
-with tab_pbi:
-    v1, v2, v3, v4, v5 = st.tabs([
-        "1. Overall View",
-        "2. Vehicle Type View",
-        "3. Revenue View",
-        "4. Cancellation View",
-        "5. Ratings View"
-    ])
-
-    # -------------------------------------------------------------------------
-    # VIEW 1: OVERALL VIEW
-    # -------------------------------------------------------------------------
-    with v1:
-        c1, c2 = st.columns([7, 5])
-        
-        with c1:
-            with st.container(border=True):
-                st.markdown("""
-                <div class="card-header-flex">
-                    <div class="card-title-text">📈 Ride Volume Over Time (Daily Trajectory)</div>
-                    <span class="kpi-mini-pill">July 01 - 31</span>
-                </div>
-                <div class="card-subtitle-text">Tracking daily requests against completed trips across the month.</div>
-                """, unsafe_allow_html=True)
-                
-                daily_total = filtered_df.groupby('Ride_Date').size().reset_index(name='Total_Rides')
-                daily_success = filtered_df[filtered_df['Booking_Status'] == 'Success'].groupby('Ride_Date').size().reset_index(name='Completed_Rides')
-                daily_merged = pd.merge(daily_total, daily_success, on='Ride_Date', how='left').fillna(0)
-                
-                fig_trend = go.Figure()
-                fig_trend.add_trace(go.Scatter(
-                    x=daily_merged['Ride_Date'],
-                    y=daily_merged['Total_Rides'],
-                    mode='lines+markers',
-                    name='Total Requests',
-                    line=dict(color='#D4FF00', width=3),
-                    marker=dict(size=6, color='#D4FF00'),
-                    fill='tozeroy',
-                    fillcolor='rgba(212, 255, 0, 0.05)'
-                ))
-                fig_trend.add_trace(go.Scatter(
-                    x=daily_merged['Ride_Date'],
-                    y=daily_merged['Completed_Rides'],
-                    mode='lines+markers',
-                    name='Completed Rides',
-                    line=dict(color='#10B981', width=2, dash='dot'),
-                    marker=dict(size=4, color='#10B981')
-                ))
-                fig_trend = apply_theme_plot(fig_trend, height=330)
-                fig_trend.update_layout(hovermode='x unified')
-                st.plotly_chart(fig_trend, use_container_width=True)
-
-                # Mandatory Insight & Recommendation under Graph 1
-                st.markdown("""
-                <div class="insight-box">
-                    <div class="insight-row">
-                        <span class="badge-insight">💡 One-Line Insight</span>
-                        <span class="insight-text">Daily demand maintains a steady pace of ~3,320 rides/day, but approximately 1,260 trips fail daily due to cancellations and driver shortages.</span>
-                    </div>
-                    <div class="insight-row">
-                        <span class="badge-recom">🎯 Business Action</span>
-                        <span class="recom-text">Implement dynamic driver staging bonuses on high-velocity weekend dates to bridge the recurring 38% fulfillment deficit.</span>
-                    </div>
-                </div>
-                """, unsafe_allow_html=True)
-
-        with c2:
-            with st.container(border=True):
-                st.markdown("""
-                <div class="card-header-flex">
-                    <div class="card-title-text">🎯 Booking Status Breakdown</div>
-                    <span class="kpi-mini-pill">103,024 Bookings</span>
-                </div>
-                <div class="card-subtitle-text">Fulfillment proportions: success, cancellations, and supply gaps.</div>
-                """, unsafe_allow_html=True)
-                
-                status_counts = filtered_df['Booking_Status'].value_counts().reset_index()
-                status_counts.columns = ['Status', 'Count']
-                
-                status_palette = {
-                    'Success': '#10B981',
-                    'Canceled by Driver': '#FF3B56',
-                    'Canceled by Customer': '#FFB800',
-                    'Driver Not Found': '#5F6370'
-                }
-                
-                fig_status = px.pie(
-                    status_counts,
-                    names='Status',
-                    values='Count',
-                    hole=0.68,
-                    color='Status',
-                    color_discrete_map=status_palette
-                )
-                fig_status.update_traces(
-                    textposition='inside',
-                    textinfo='percent',
-                    marker=dict(line=dict(color='#0B0C10', width=3))
-                )
-                fig_status = apply_theme_plot(fig_status, height=330)
-                st.plotly_chart(fig_status, use_container_width=True)
-
-                # Mandatory Insight & Recommendation under Graph 2
-                st.markdown("""
-                <div class="insight-box">
-                    <div class="insight-row">
-                        <span class="badge-insight">💡 One-Line Insight</span>
-                        <span class="insight-text">Success rate stands at 62.09%, while driver-initiated cancellations (17.89%) constitute the single largest friction factor.</span>
-                    </div>
-                    <div class="insight-row">
-                        <span class="badge-recom">🎯 Business Action</span>
-                        <span class="recom-text">Penalize repeated driver-initiated cancellations and introduce 5-trip completion streaks to incentivize trip acceptance.</span>
-                    </div>
-                </div>
-                """, unsafe_allow_html=True)
-
-        # Graph 3 & 3B: Hourly Distribution & Day of Week Capsule Bar Chart
-        h_col1, h_col2 = st.columns([7, 5])
-        
-        with h_col1:
-            with st.container(border=True):
-                st.markdown("""
-                <div class="card-header-flex">
-                    <div class="card-title-text">⏰ 24-Hour Demand Curve & Peak Hours</div>
-                    <span class="kpi-mini-pill">0:00 - 23:00 Hrs</span>
-                </div>
-                <div class="card-subtitle-text">Hourly trip requests showing morning commute (8-11 AM) and evening rush (5-9 PM).</div>
-                """, unsafe_allow_html=True)
-                
-                hourly_split = filtered_df.groupby(['Ride_Hour', 'Booking_Status']).size().reset_index(name='Count')
-                fig_hour = px.bar(
-                    hourly_split,
-                    x='Ride_Hour',
-                    y='Count',
-                    color='Booking_Status',
-                    color_discrete_map=status_palette,
-                    barmode='stack',
-                    labels={'Ride_Hour': 'Hour of Day (24h)', 'Count': 'Trips'}
-                )
-                fig_hour = apply_theme_plot(fig_hour, height=330)
-                fig_hour.update_layout(xaxis=dict(tickmode='linear', tick0=0, dtick=1))
-                st.plotly_chart(fig_hour, use_container_width=True)
-
-                # Mandatory Insight & Recommendation under Graph 3
-                st.markdown("""
-                <div class="insight-box">
-                    <div class="insight-row">
-                        <span class="badge-insight">💡 One-Line Insight</span>
-                        <span class="insight-text">Demand spikes sharply during the 17:00–21:00 evening commute, where 'Driver Not Found' events increase by 42%.</span>
-                    </div>
-                    <div class="insight-row">
-                        <span class="badge-recom">🎯 Business Action</span>
-                        <span class="recom-text">Activate automated 1.15x–1.25x micro-surge pricing during 17:00–21:00 to attract off-duty drivers onto the platform.</span>
-                    </div>
-                </div>
-                """, unsafe_allow_html=True)
-
-        with h_col2:
-            with st.container(border=True):
-                st.markdown("""
-                <div class="card-header-flex">
-                    <div class="card-title-text">📅 Demand Velocity by Day of Week</div>
-                    <span class="kpi-mini-pill" style="color: #D4FF00;">Peak: Tuesday</span>
-                </div>
-                <div class="card-subtitle-text">Capsule bar breakdown showing weekday peak volumes vs weekends.</div>
-                """, unsafe_allow_html=True)
-                
-                days_order = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
-                dow_df = filtered_df.groupby('Day_Name').agg(
-                    Total_Trips=('Booking_ID', 'count')
-                ).reindex(days_order).reset_index().fillna(0)
-                
-                # Highlight peak day in Volt Lime, others in dark capsule
-                max_trips = dow_df['Total_Trips'].max()
-                bar_colors = ['#D4FF00' if t == max_trips else '#23252E' for t in dow_df['Total_Trips']]
-                
-                fig_dow = go.Figure(go.Bar(
-                    x=dow_df['Day_Name'].str[:3],
-                    y=dow_df['Total_Trips'],
-                    marker=dict(
-                        color=bar_colors,
-                        line=dict(color='rgba(255,255,255,0.08)', width=1),
-                        cornerradius=12
-                    ),
-                    text=dow_df['Total_Trips'].apply(lambda x: f"{x:,}"),
-                    textposition='outside'
-                ))
-                fig_dow = apply_theme_plot(fig_dow, height=330)
-                st.plotly_chart(fig_dow, use_container_width=True)
-
-                # Mandatory Insight & Recommendation under Graph 3B
-                st.markdown("""
-                <div class="insight-box">
-                    <div class="insight-row">
-                        <span class="badge-insight">💡 One-Line Insight</span>
-                        <span class="insight-text">Tuesdays (16,926 rides) and Mondays (16,729) generate the highest mobility traffic, while weekend demand stabilizes at ~13,200.</span>
-                    </div>
-                    <div class="insight-row">
-                        <span class="badge-recom">🎯 Business Action</span>
-                        <span class="recom-text">Mandate maximum fleet readiness on Monday and Tuesday mornings to capture peak corporate commuting volumes.</span>
-                    </div>
-                </div>
-                """, unsafe_allow_html=True)
-
-    # -------------------------------------------------------------------------
-    # VIEW 2: VEHICLE TYPE VIEW
-    # -------------------------------------------------------------------------
-    with v2:
-        vc1, vc2 = st.columns([7, 5])
-        
-        with vc1:
-            with st.container(border=True):
-                st.markdown("""
-                <div class="card-header-flex">
-                    <div class="card-title-text">🚗 Top Vehicle Types by Ride Distance</div>
-                    <span class="kpi-mini-pill">Ranked by Mean KM</span>
-                </div>
-                <div class="card-subtitle-text">Average trip length (km) across all 7 vehicle tiers.</div>
-                """, unsafe_allow_html=True)
-                
-                veh_dist = filtered_df.groupby('Vehicle_Type').agg(
-                    Avg_Distance=('Ride_Distance', 'mean'),
-                    Total_Distance=('Ride_Distance', 'sum'),
-                    Trip_Count=('Booking_ID', 'count')
-                ).reset_index().sort_values(by='Avg_Distance', ascending=True)
-                
-                fig_veh_dist = px.bar(
-                    veh_dist,
-                    y='Vehicle_Type',
-                    x='Avg_Distance',
-                    orientation='h',
-                    text='Avg_Distance',
-                    color='Avg_Distance',
-                    color_continuous_scale=[[0, '#23252E'], [0.4, '#10B981'], [1, '#D4FF00']],
-                    labels={'Avg_Distance': 'Avg Distance (km)', 'Vehicle_Type': 'Vehicle Category'}
-                )
-                fig_veh_dist.update_traces(
-                    texttemplate='%{text:.2f} km',
-                    textposition='outside',
-                    marker=dict(line=dict(color='rgba(255,255,255,0.08)', width=1))
-                )
-                fig_veh_dist = apply_theme_plot(fig_veh_dist, height=330)
-                fig_veh_dist.update_layout(coloraxis_showscale=False)
-                st.plotly_chart(fig_veh_dist, use_container_width=True)
-
-                # Mandatory Insight & Recommendation under Graph 4
-                st.markdown("""
-                <div class="insight-box">
-                    <div class="insight-row">
-                        <span class="badge-insight">💡 One-Line Insight</span>
-                        <span class="insight-text">Prime Sedan (15.76 km) and eBike (15.58 km) serve long commuter trips, while Auto operates strictly as short urban transit (6.24 km).</span>
-                    </div>
-                    <div class="insight-row">
-                        <span class="badge-recom">🎯 Business Action</span>
-                        <span class="recom-text">Reposition Auto fleets exclusively as first/last-mile metro feeder transit and market Sedan/SUV for airport/inter-suburb corridors.</span>
-                    </div>
-                </div>
-                """, unsafe_allow_html=True)
-
-        with vc2:
-            with st.container(border=True):
-                st.markdown("""
-                <div class="card-header-flex">
-                    <div class="card-title-text">🚕 Fleet Volume Distribution Share</div>
-                    <span class="kpi-mini-pill">7 Categories</span>
-                </div>
-                <div class="card-subtitle-text">Proportional booking requests captured by each mobility tier.</div>
-                """, unsafe_allow_html=True)
-                
-                veh_counts = filtered_df['Vehicle_Type'].value_counts().reset_index()
-                veh_counts.columns = ['Vehicle_Type', 'Trips']
-                
-                fig_v_share = px.pie(
-                    veh_counts,
-                    names='Vehicle_Type',
-                    values='Trips',
-                    hole=0.68,
-                    color_discrete_sequence=['#D4FF00', '#10B981', '#00F0FF', '#FFB800', '#FF3B56', '#8E929E', '#A78BFA']
-                )
-                fig_v_share.update_traces(
-                    textposition='inside',
-                    textinfo='percent',
-                    marker=dict(line=dict(color='#0B0C10', width=3))
-                )
-                fig_v_share = apply_theme_plot(fig_v_share, height=330)
-                st.plotly_chart(fig_v_share, use_container_width=True)
-
-                # Mandatory Insight & Recommendation under Graph 5
-                st.markdown("""
-                <div class="insight-box">
-                    <div class="insight-row">
-                        <span class="badge-insight">💡 One-Line Insight</span>
-                        <span class="insight-text">Demand is uniformly balanced across all 7 vehicle classes (~14.2% each), confirming high multi-modal customer adoption.</span>
-                    </div>
-                    <div class="insight-row">
-                        <span class="badge-recom">🎯 Business Action</span>
-                        <span class="recom-text">Maintain balanced driver supply quotas across 2-wheelers, autos, and cabs to prevent category cannibalization.</span>
-                    </div>
-                </div>
-                """, unsafe_allow_html=True)
-
-        # Graph 6: Turnaround Time Performance
+with tab_overall:
+    c1, c2 = st.columns([7, 5])
+    
+    with c1:
         with st.container(border=True):
             st.markdown("""
-            <div class="card-header-flex">
-                <div class="card-title-text">⏱️ Turnaround Times: Vehicle Arrival (V_TAT) vs. Customer Boarding (C_TAT)</div>
-                <span class="kpi-mini-pill">Measured in Seconds</span>
-            </div>
-            <div class="card-subtitle-text">Evaluating driver transit latency (V_TAT) against rider boarding speed (C_TAT) across fleets.</div>
+            <div class="card-title-text">📈 Ride Volume Over Time (Daily Trajectory)</div>
+            <div class="card-subtitle-text">Tracking daily requests against completed trips across the month.</div>
             """, unsafe_allow_html=True)
             
-            tat_summary = success_records.groupby('Vehicle_Type')[['V_TAT', 'C_TAT']].mean().reset_index()
-            fig_tat = px.bar(
-                tat_summary,
-                x='Vehicle_Type',
-                y=['V_TAT', 'C_TAT'],
-                barmode='group',
-                color_discrete_map={'V_TAT': '#D4FF00', 'C_TAT': '#FF3B56'},
-                labels={'value': 'Seconds', 'variable': 'TAT Metric', 'Vehicle_Type': 'Vehicle Category'}
-            )
-            fig_tat = apply_theme_plot(fig_tat, height=320)
-            st.plotly_chart(fig_tat, use_container_width=True)
-
-            # Mandatory Insight & Recommendation under Graph 6
-            st.markdown("""
-            <div class="insight-box">
-                <div class="insight-row">
-                    <span class="badge-insight">💡 One-Line Insight</span>
-                    <span class="insight-text">Vehicle arrival time (V_TAT: ~170s) is double the customer boarding time (C_TAT: ~85s), driving rider wait-time dissatisfaction.</span>
-                </div>
-                <div class="insight-row">
-                    <span class="badge-recom">🎯 Business Action</span>
-                    <span class="recom-text">Tighten the maximum driver dispatch radius from 4 km to 2.5 km to reduce arrival latency by an estimated 35%.</span>
-                </div>
-            </div>
-            """, unsafe_allow_html=True)
-
-    # -------------------------------------------------------------------------
-    # VIEW 3: REVENUE VIEW
-    # -------------------------------------------------------------------------
-    with v3:
-        rc1, rc2 = st.columns([6, 6])
-        
-        with rc1:
-            with st.container(border=True):
-                st.markdown("""
-                <div class="card-header-flex">
-                    <div class="card-title-text">💳 Revenue Contribution by Payment Gateway</div>
-                    <span class="kpi-mini-pill">Total: ₹35.08M</span>
-                </div>
-                <div class="card-subtitle-text">Completed booking revenue split across Cash, UPI, and Card channels.</div>
-                """, unsafe_allow_html=True)
-                
-                pm_rev = success_records.groupby('Payment_Method').agg(
-                    Revenue=('Booking_Value', 'sum'),
-                    Count=('Booking_ID', 'count')
-                ).reset_index().sort_values(by='Revenue', ascending=False)
-                
-                fig_pm = px.pie(
-                    pm_rev,
-                    names='Payment_Method',
-                    values='Revenue',
-                    hole=0.68,
-                    color_discrete_sequence=['#10B981', '#D4FF00', '#00F0FF', '#A78BFA']
-                )
-                fig_pm.update_traces(
-                    textposition='inside',
-                    textinfo='percent',
-                    marker=dict(line=dict(color='#0B0C10', width=3))
-                )
-                fig_pm = apply_theme_plot(fig_pm, height=330)
-                st.plotly_chart(fig_pm, use_container_width=True)
-
-                # Mandatory Insight & Recommendation under Graph 7
-                st.markdown("""
-                <div class="insight-box">
-                    <div class="insight-row">
-                        <span class="badge-insight">💡 One-Line Insight</span>
-                        <span class="insight-text">Physical cash remains dominant at 54.9% (₹19.26M), while UPI captures 40.4% (₹14.17M) and cards represent only 4.7%.</span>
-                    </div>
-                    <div class="insight-row">
-                        <span class="badge-recom">🎯 Business Action</span>
-                        <span class="recom-text">Launch a ₹20 cashback incentive for switching from Cash to UPI AutoPay to eliminate in-cab change disputes and turnaround delays.</span>
-                    </div>
-                </div>
-                """, unsafe_allow_html=True)
-
-        with rc2:
-            with st.container(border=True):
-                st.markdown("""
-                <div class="card-header-flex">
-                    <div class="card-title-text">👑 Top 5 Customers by Total Booking Value</div>
-                    <span class="kpi-mini-pill">High LTV Riders</span>
-                </div>
-                <div class="card-subtitle-text">Top revenue-generating patrons and their completed trip spends.</div>
-                """, unsafe_allow_html=True)
-                
-                top_spenders = success_records.groupby('Customer_ID').agg(
-                    Total_Spent=('Booking_Value', 'sum'),
-                    Trips=('Booking_ID', 'count')
-                ).reset_index().sort_values(by='Total_Spent', ascending=True).tail(5)
-                
-                fig_top_c = px.bar(
-                    top_spenders,
-                    y='Customer_ID',
-                    x='Total_Spent',
-                    orientation='h',
-                    text='Total_Spent',
-                    color='Total_Spent',
-                    color_continuous_scale=[[0, '#10B981'], [1, '#D4FF00']]
-                )
-                fig_top_c.update_traces(
-                    texttemplate='₹%{text:,}',
-                    textposition='outside',
-                    marker=dict(line=dict(color='rgba(255,255,255,0.08)', width=1))
-                )
-                fig_top_c = apply_theme_plot(fig_top_c, height=330)
-                fig_top_c.update_layout(coloraxis_showscale=False)
-                st.plotly_chart(fig_top_c, use_container_width=True)
-
-                # Mandatory Insight & Recommendation under Graph 8
-                st.markdown("""
-                <div class="insight-box">
-                    <div class="insight-row">
-                        <span class="badge-insight">💡 One-Line Insight</span>
-                        <span class="insight-text">Top power riders generate up to ₹6,019 over premium long-distance trips without recording any cancellation incidents.</span>
-                    </div>
-                    <div class="insight-row">
-                        <span class="badge-recom">🎯 Business Action</span>
-                        <span class="recom-text">Enroll top 5% revenue riders into an 'OLA Elite Pass' tier providing zero surge caps and priority vehicle allocation.</span>
-                    </div>
-                </div>
-                """, unsafe_allow_html=True)
-
-        # Graph 9: Daily Distance & Revenue Profile
-        with st.container(border=True):
-            st.markdown("""
-            <div class="card-header-flex">
-                <div class="card-title-text">📍 Ride Distance Distribution Per Day (Daily Fleet Mileage vs Mean Trip KM)</div>
-                <span class="kpi-mini-pill">Daily Fleet Mileage</span>
-            </div>
-            <div class="card-subtitle-text">Tracking aggregate fleet kilometers and average trip length across the month.</div>
-            """, unsafe_allow_html=True)
+            daily_total = filtered_df.groupby('Ride_Date').size().reset_index(name='Total_Rides')
+            daily_success = filtered_df[filtered_df['Booking_Status'] == 'Success'].groupby('Ride_Date').size().reset_index(name='Completed_Rides')
+            daily_merged = pd.merge(daily_total, daily_success, on='Ride_Date', how='left').fillna(0)
             
-            daily_dist = success_records.groupby('Ride_Date').agg(
-                Total_Km=('Ride_Distance', 'sum'),
-                Avg_Km=('Ride_Distance', 'mean')
-            ).reset_index()
-            
-            fig_dual = go.Figure()
-            fig_dual.add_trace(go.Bar(
-                x=daily_dist['Ride_Date'],
-                y=daily_dist['Total_Km'],
-                name='Total Fleet Km',
-                marker=dict(color='#23252E', line=dict(color='#D4FF00', width=1))
+            fig_trend = go.Figure()
+            fig_trend.add_trace(go.Scatter(
+                x=daily_merged['Ride_Date'],
+                y=daily_merged['Total_Rides'],
+                mode='lines+markers',
+                name='Total Requests',
+                line=dict(color='#D4FF00', width=3),
+                marker=dict(size=6, color='#D4FF00'),
+                fill='tozeroy',
+                fillcolor='rgba(212, 255, 0, 0.05)'
             ))
-            fig_dual.add_trace(go.Scatter(
-                x=daily_dist['Ride_Date'],
-                y=daily_dist['Avg_Km'],
-                name='Avg Trip Km',
-                yaxis='y2',
-                line=dict(color='#D4FF00', width=3)
+            fig_trend.add_trace(go.Scatter(
+                x=daily_merged['Ride_Date'],
+                y=daily_merged['Completed_Rides'],
+                mode='lines+markers',
+                name='Completed Rides',
+                line=dict(color='#10B981', width=2, dash='dot'),
+                marker=dict(size=4, color='#10B981')
             ))
-            fig_dual = apply_theme_plot(fig_dual, height=320)
-            fig_dual.update_layout(
-                yaxis=dict(title="Total Fleet Distance (km)"),
-                yaxis2=dict(title="Average Distance (km)", overlaying='y', side='right', showgrid=False)
-            )
-            st.plotly_chart(fig_dual, use_container_width=True)
+            fig_trend = apply_theme_plot(fig_trend, height=330)
+            fig_trend.update_layout(hovermode='x unified')
+            st.plotly_chart(fig_trend, use_container_width=True)
 
-            # Mandatory Insight & Recommendation under Graph 9
             st.markdown("""
             <div class="insight-box">
                 <div class="insight-row">
                     <span class="badge-insight">💡 One-Line Insight</span>
-                    <span class="insight-text">Daily fleet distance consistently logs 32,000–35,000 km with a remarkably steady trip length mean of 15.2 km.</span>
+                    <span class="insight-text">Daily demand maintains a steady pace of ~3,320 rides/day, but approximately 1,260 trips fail daily due to cancellations and driver shortages.</span>
                 </div>
                 <div class="insight-row">
                     <span class="badge-recom">🎯 Business Action</span>
-                    <span class="recom-text">Structure driver fuel/EV recharge subsidies tied to completing 120+ km per shift to sustain fleet uptime.</span>
+                    <span class="recom-text">Implement dynamic driver staging bonuses on high-velocity weekend dates to bridge the recurring 38% fulfillment deficit.</span>
                 </div>
             </div>
             """, unsafe_allow_html=True)
 
-    # -------------------------------------------------------------------------
-    # VIEW 4: CANCELLATION VIEW
-    # -------------------------------------------------------------------------
-    with v4:
-        canc_c1, canc_c2 = st.columns(2)
-        
-        with canc_c1:
-            with st.container(border=True):
-                st.markdown("""
-                <div class="card-header-flex">
-                    <div class="card-title-text">👤 Cancelled Rides Reasons (Customer)</div>
-                    <span class="kpi-mini-pill">10,499 Rides</span>
-                </div>
-                <div class="card-subtitle-text">Root cause analysis behind customer-initiated cancellations.</div>
-                """, unsafe_allow_html=True)
-                
-                c_reasons = filtered_df['Canceled_Rides_by_Customer'].dropna().value_counts().reset_index()
-                c_reasons.columns = ['Reason', 'Cancellations']
-                
-                fig_cr = px.bar(
-                    c_reasons.sort_values(by='Cancellations', ascending=True),
-                    y='Reason',
-                    x='Cancellations',
-                    orientation='h',
-                    text='Cancellations',
-                    color='Cancellations',
-                    color_continuous_scale=[[0, '#23252E'], [1, '#FFB800']]
-                )
-                fig_cr.update_traces(texttemplate='%{text:,}', textposition='outside')
-                fig_cr = apply_theme_plot(fig_cr, height=310)
-                fig_cr.update_layout(coloraxis_showscale=False)
-                st.plotly_chart(fig_cr, use_container_width=True)
-
-                # Mandatory Insight & Recommendation under Graph 10
-                st.markdown("""
-                <div class="insight-box">
-                    <div class="insight-row">
-                        <span class="badge-insight">💡 One-Line Insight</span>
-                        <span class="insight-text">30.2% of customer cancellations (3,175 rides) occur because the driver is stationary or moving away from pickup.</span>
-                    </div>
-                    <div class="insight-row">
-                        <span class="badge-recom">🎯 Business Action</span>
-                        <span class="recom-text">Deploy automated GPS telemetry monitors that trigger instant ride re-dispatch if a driver shows no movement for 180 seconds.</span>
-                    </div>
-                </div>
-                """, unsafe_allow_html=True)
-
-        with canc_c2:
-            with st.container(border=True):
-                st.markdown("""
-                <div class="card-header-flex">
-                    <div class="card-title-text">🚗 Cancelled Rides Reasons (Drivers)</div>
-                    <span class="kpi-mini-pill">18,434 Rides</span>
-                </div>
-                <div class="card-subtitle-text">Root cause analysis behind driver-initiated cancellations.</div>
-                """, unsafe_allow_html=True)
-                
-                d_reasons = filtered_df['Canceled_Rides_by_Driver'].dropna().value_counts().reset_index()
-                d_reasons.columns = ['Reason', 'Cancellations']
-                
-                fig_dr = px.bar(
-                    d_reasons.sort_values(by='Cancellations', ascending=True),
-                    y='Reason',
-                    x='Cancellations',
-                    orientation='h',
-                    text='Cancellations',
-                    color='Cancellations',
-                    color_continuous_scale=[[0, '#23252E'], [1, '#FF3B56']]
-                )
-                fig_dr.update_traces(texttemplate='%{text:,}', textposition='outside')
-                fig_dr = apply_theme_plot(fig_dr, height=310)
-                fig_dr.update_layout(coloraxis_showscale=False)
-                st.plotly_chart(fig_dr, use_container_width=True)
-
-                # Mandatory Insight & Recommendation under Graph 11
-                st.markdown("""
-                <div class="insight-box">
-                    <div class="insight-row">
-                        <span class="badge-insight">💡 One-Line Insight</span>
-                        <span class="insight-text">35.5% of driver cancellations (6,542 rides) cite 'Personal & Car related issue', signaling acute maintenance and fatigue challenges.</span>
-                    </div>
-                    <div class="insight-row">
-                        <span class="badge-recom">🎯 Business Action</span>
-                        <span class="recom-text">Partner with quick-service pit stop centers for express vehicle diagnostics and enforce mandatory fatigue breaks after 6 active hours.</span>
-                    </div>
-                </div>
-                """, unsafe_allow_html=True)
-
-        # Graph 12: Incomplete Rides Breakdown
+    with c2:
         with st.container(border=True):
             st.markdown("""
-            <div class="card-header-flex">
-                <div class="card-title-text">⚠️ Incomplete Rides Breakdown (3,926 Trips Terminated Mid-Journey)</div>
-                <span class="kpi-mini-pill">Operational Friction</span>
-            </div>
-            <div class="card-subtitle-text">Distribution of early drop-offs caused by customer demand, vehicle breakdown, and external issues.</div>
+            <div class="card-title-text">🎯 Booking Status Breakdown</div>
+            <div class="card-subtitle-text">Fulfillment proportions: success, cancellations, and supply gaps.</div>
             """, unsafe_allow_html=True)
             
-            inc_reasons = filtered_df[filtered_df['Incomplete_Rides'] == 'Yes']['Incomplete_Rides_Reason'].value_counts().reset_index()
-            inc_reasons.columns = ['Reason', 'Count']
+            status_counts = filtered_df['Booking_Status'].value_counts().reset_index()
+            status_counts.columns = ['Status', 'Count']
             
-            in1, in2 = st.columns([5, 7])
-            with in1:
-                fig_inc_pie = px.pie(
-                    inc_reasons,
-                    names='Reason',
-                    values='Count',
-                    hole=0.68,
-                    color_discrete_sequence=['#FF3B56', '#FFB800', '#D4FF00']
-                )
-                fig_inc_pie.update_traces(
-                    textposition='inside',
-                    textinfo='percent',
-                    marker=dict(line=dict(color='#0B0C10', width=3))
-                )
-                fig_inc_pie = apply_theme_plot(fig_inc_pie, height=280)
-                st.plotly_chart(fig_inc_pie, use_container_width=True)
-                
-            with in2:
-                st.markdown("""
-                <div style="background: #0E0F14; border: 1px solid rgba(255, 59, 86, 0.25); border-left: 4px solid #FF3B56; border-radius: 12px; padding: 18px; margin-top: 15px;">
-                    <h5 style="color: #FF3B56; margin: 0 0 8px 0; font-size: 0.95rem;">Impact of Mid-Trip Terminations</h5>
-                    <p style="color: #CBD5E1; font-size: 0.85rem; line-height: 1.6; margin: 0;">
-                        • <b>Customer Demand (40.78% / 1,601 rides):</b> Passenger requested early exit due to severe traffic gridlock.<br>
-                        • <b>Vehicle Breakdown (40.52% / 1,591 rides):</b> Engine faults, tire punctures, and battery depletion in eBikes.<br>
-                        • <b>Other Issues (18.70% / 734 rides):</b> Route obstruction, bad weather, or fare payment disputes.
-                    </p>
-                </div>
-                """, unsafe_allow_html=True)
+            status_palette = {
+                'Success': '#10B981',
+                'Canceled by Driver': '#FF3B56',
+                'Canceled by Customer': '#FFB800',
+                'Driver Not Found': '#5F6370'
+            }
+            
+            fig_status = px.pie(
+                status_counts,
+                names='Status',
+                values='Count',
+                hole=0.68,
+                color='Status',
+                color_discrete_map=status_palette
+            )
+            fig_status.update_traces(
+                textposition='inside',
+                textinfo='percent',
+                marker=dict(line=dict(color='#0B0C10', width=3))
+            )
+            fig_status = apply_theme_plot(fig_status, height=330)
+            st.plotly_chart(fig_status, use_container_width=True)
 
-            # Mandatory Insight & Recommendation under Graph 12
             st.markdown("""
             <div class="insight-box">
                 <div class="insight-row">
                     <span class="badge-insight">💡 One-Line Insight</span>
-                    <span class="insight-text">Vehicle breakdown caused 1,591 mid-trip trip abortions (40.52%), creating severe customer dissatisfaction and safety liability.</span>
+                    <span class="insight-text">Success rate stands at 62.09%, while driver-initiated cancellations (17.89%) constitute the single largest friction factor.</span>
                 </div>
                 <div class="insight-row">
                     <span class="badge-recom">🎯 Business Action</span>
-                    <span class="recom-text">Mandate weekly vehicle fitness self-checks in the driver app and provide instant pro-rated refunds for passengers facing breakdowns.</span>
+                    <span class="recom-text">Penalize repeated driver-initiated cancellations and introduce 5-trip completion streaks to incentivize trip acceptance.</span>
                 </div>
             </div>
             """, unsafe_allow_html=True)
 
-    # -------------------------------------------------------------------------
-    # VIEW 5: RATINGS VIEW
-    # -------------------------------------------------------------------------
-    with v5:
-        rat1, rat2 = st.columns(2)
-        
-        with rat1:
-            with st.container(border=True):
-                st.markdown("""
-                <div class="card-header-flex">
-                    <div class="card-title-text">⭐ Driver Ratings Distribution</div>
-                    <span class="kpi-mini-pill">Avg: 4.00 / 5</span>
-                </div>
-                <div class="card-subtitle-text">Scores given by passengers evaluating driver behavior and trip comfort.</div>
-                """, unsafe_allow_html=True)
-                
-                fig_d_hist = px.histogram(
-                    success_records,
-                    x='Driver_Ratings',
-                    nbins=20,
-                    color_discrete_sequence=['#D4FF00']
-                )
-                fig_d_hist = apply_theme_plot(fig_d_hist, height=290)
-                fig_d_hist.update_layout(xaxis_title="Driver Rating Score", yaxis_title="Number of Trips")
-                st.plotly_chart(fig_d_hist, use_container_width=True)
-
-                # Mandatory Insight & Recommendation under Graph 13
-                st.markdown("""
-                <div class="insight-box">
-                    <div class="insight-row">
-                        <span class="badge-insight">💡 One-Line Insight</span>
-                        <span class="insight-text">Driver ratings center tightly around 4.00, with no records below 3.0, indicating baseline service satisfaction.</span>
-                    </div>
-                    <div class="insight-row">
-                        <span class="badge-recom">🎯 Business Action</span>
-                        <span class="recom-text">Reward drivers maintaining ratings above 4.7 with preferred access to high-value airport pickup queues.</span>
-                    </div>
-                </div>
-                """, unsafe_allow_html=True)
-
-        with rat2:
-            with st.container(border=True):
-                st.markdown("""
-                <div class="card-header-flex">
-                    <div class="card-title-text">⭐ Customer Ratings Distribution</div>
-                    <span class="kpi-mini-pill">Avg: 4.00 / 5</span>
-                </div>
-                <div class="card-subtitle-text">Scores given by drivers evaluating rider punctuality and conduct.</div>
-                """, unsafe_allow_html=True)
-                
-                fig_c_hist = px.histogram(
-                    success_records,
-                    x='Customer_Rating',
-                    nbins=20,
-                    color_discrete_sequence=['#10B981']
-                )
-                fig_c_hist = apply_theme_plot(fig_c_hist, height=290)
-                fig_c_hist.update_layout(xaxis_title="Customer Rating Score", yaxis_title="Number of Trips")
-                st.plotly_chart(fig_c_hist, use_container_width=True)
-
-                # Mandatory Insight & Recommendation under Graph 14
-                st.markdown("""
-                <div class="insight-box">
-                    <div class="insight-row">
-                        <span class="badge-insight">💡 One-Line Insight</span>
-                        <span class="insight-text">Customer ratings mirror driver ratings at an average of 4.00, demonstrating mutual ecosystem trust.</span>
-                    </div>
-                    <div class="insight-row">
-                        <span class="badge-recom">🎯 Business Action</span>
-                        <span class="recom-text">Provide priority pickup ETA discounts to riders who consistently maintain a 4.5+ star rating.</span>
-                    </div>
-                </div>
-                """, unsafe_allow_html=True)
-
-        # Graph 15: Cross-Fleet Rating Parity
+    # Hourly Distribution & Day of Week Capsule Bar Chart
+    h_col1, h_col2 = st.columns([7, 5])
+    
+    with h_col1:
         with st.container(border=True):
             st.markdown("""
-            <div class="card-header-flex">
-                <div class="card-title-text">⚖️ Customer vs. Driver Ratings by Vehicle Category</div>
-                <span class="kpi-mini-pill">Cross-Fleet Parity</span>
-            </div>
-            <div class="card-subtitle-text">Comparing passenger and driver ratings across the 7 fleet categories to identify satisfaction gaps.</div>
+            <div class="card-title-text">⏰ 24-Hour Demand Curve & Peak Hours</div>
+            <div class="card-subtitle-text">Hourly trip requests showing morning commute (8-11 AM) and evening rush (5-9 PM).</div>
             """, unsafe_allow_html=True)
             
-            rating_comp = success_records.groupby('Vehicle_Type').agg(
-                Customer_Rating=('Customer_Rating', 'mean'),
-                Driver_Rating=('Driver_Ratings', 'mean')
-            ).reset_index()
-            
-            fig_r_comp = px.bar(
-                rating_comp,
-                x='Vehicle_Type',
-                y=['Customer_Rating', 'Driver_Rating'],
-                barmode='group',
-                color_discrete_map={'Customer_Rating': '#D4FF00', 'Driver_Rating': '#10B981'}
+            hourly_split = filtered_df.groupby(['Ride_Hour', 'Booking_Status']).size().reset_index(name='Count')
+            fig_hour = px.bar(
+                hourly_split,
+                x='Ride_Hour',
+                y='Count',
+                color='Booking_Status',
+                color_discrete_map=status_palette,
+                barmode='stack',
+                labels={'Ride_Hour': 'Hour of Day (24h)', 'Count': 'Trips'}
             )
-            fig_r_comp = apply_theme_plot(fig_r_comp, height=320)
-            fig_r_comp.update_layout(yaxis=dict(range=[3.5, 4.3], title="Rating (Out of 5)"))
-            st.plotly_chart(fig_r_comp, use_container_width=True)
+            fig_hour = apply_theme_plot(fig_hour, height=330)
+            fig_hour.update_layout(xaxis=dict(tickmode='linear', tick0=0, dtick=1))
+            st.plotly_chart(fig_hour, use_container_width=True)
 
-            # Mandatory Insight & Recommendation under Graph 15
             st.markdown("""
             <div class="insight-box">
                 <div class="insight-row">
                     <span class="badge-insight">💡 One-Line Insight</span>
-                    <span class="insight-text">Rating parity is exceptionally stable across all vehicle types (3.99 to 4.01), showing uniform quality regardless of vehicle tier.</span>
+                    <span class="insight-text">Demand spikes sharply during the 17:00–21:00 evening commute, where 'Driver Not Found' events increase by 42%.</span>
                 </div>
                 <div class="insight-row">
                     <span class="badge-recom">🎯 Business Action</span>
-                    <span class="recom-text">Maintain current vehicle onboarding quality benchmarks and expand premium Prime Plus perks to raise satisfaction toward 4.5.</span>
+                    <span class="recom-text">Activate automated 1.15x–1.25x micro-surge pricing during 17:00–21:00 to attract off-duty drivers onto the platform.</span>
+                </div>
+            </div>
+            """, unsafe_allow_html=True)
+
+    with h_col2:
+        with st.container(border=True):
+            st.markdown("""
+            <div class="card-title-text">📅 Demand Velocity by Day of Week</div>
+            <div class="card-subtitle-text">Capsule bar breakdown showing weekday peak volumes vs weekends.</div>
+            """, unsafe_allow_html=True)
+            
+            days_order = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+            dow_df = filtered_df.groupby('Day_Name').agg(
+                Total_Trips=('Booking_ID', 'count')
+            ).reindex(days_order).reset_index().fillna(0)
+            
+            max_trips = dow_df['Total_Trips'].max()
+            bar_colors = ['#D4FF00' if t == max_trips else '#23252E' for t in dow_df['Total_Trips']]
+            
+            fig_dow = go.Figure(go.Bar(
+                x=dow_df['Day_Name'].str[:3],
+                y=dow_df['Total_Trips'],
+                marker=dict(
+                    color=bar_colors,
+                    line=dict(color='rgba(255,255,255,0.08)', width=1),
+                    cornerradius=12
+                ),
+                text=dow_df['Total_Trips'].apply(lambda x: f"{x:,}"),
+                textposition='outside'
+            ))
+            fig_dow = apply_theme_plot(fig_dow, height=330)
+            st.plotly_chart(fig_dow, use_container_width=True)
+
+            st.markdown("""
+            <div class="insight-box">
+                <div class="insight-row">
+                    <span class="badge-insight">💡 One-Line Insight</span>
+                    <span class="insight-text">Tuesdays (16,926 rides) and Mondays (16,729) generate the highest mobility traffic, while weekend demand stabilizes at ~13,200.</span>
+                </div>
+                <div class="insight-row">
+                    <span class="badge-recom">🎯 Business Action</span>
+                    <span class="recom-text">Mandate maximum fleet readiness on Monday and Tuesday mornings to capture peak corporate commuting volumes.</span>
                 </div>
             </div>
             """, unsafe_allow_html=True)
 
 
 # =============================================================================
-# TAB 2: SQL QUERY STUDIO & WORKBENCH
+# 2. VEHICLE TYPE VIEW
+# =============================================================================
+with tab_veh:
+    vc1, vc2 = st.columns([7, 5])
+    
+    with vc1:
+        with st.container(border=True):
+            st.markdown("""
+            <div class="card-title-text">🚗 Top Vehicle Types by Ride Distance</div>
+            <div class="card-subtitle-text">Average trip length (km) across all 7 vehicle tiers.</div>
+            """, unsafe_allow_html=True)
+            
+            veh_dist = filtered_df.groupby('Vehicle_Type').agg(
+                Avg_Distance=('Ride_Distance', 'mean'),
+                Total_Distance=('Ride_Distance', 'sum'),
+                Trip_Count=('Booking_ID', 'count')
+            ).reset_index().sort_values(by='Avg_Distance', ascending=True)
+            
+            fig_veh_dist = px.bar(
+                veh_dist,
+                y='Vehicle_Type',
+                x='Avg_Distance',
+                orientation='h',
+                text='Avg_Distance',
+                color='Avg_Distance',
+                color_continuous_scale=[[0, '#23252E'], [0.4, '#10B981'], [1, '#D4FF00']],
+                labels={'Avg_Distance': 'Avg Distance (km)', 'Vehicle_Type': 'Vehicle Category'}
+            )
+            fig_veh_dist.update_traces(
+                texttemplate='%{text:.2f} km',
+                textposition='outside',
+                marker=dict(line=dict(color='rgba(255,255,255,0.08)', width=1))
+            )
+            fig_veh_dist = apply_theme_plot(fig_veh_dist, height=330)
+            fig_veh_dist.update_layout(coloraxis_showscale=False)
+            st.plotly_chart(fig_veh_dist, use_container_width=True)
+
+            st.markdown("""
+            <div class="insight-box">
+                <div class="insight-row">
+                    <span class="badge-insight">💡 One-Line Insight</span>
+                    <span class="insight-text">Prime Sedan (15.76 km) and eBike (15.58 km) serve long commuter trips, while Auto operates strictly as short urban transit (6.24 km).</span>
+                </div>
+                <div class="insight-row">
+                    <span class="badge-recom">🎯 Business Action</span>
+                    <span class="recom-text">Reposition Auto fleets exclusively as first/last-mile metro feeder transit and market Sedan/SUV for airport/inter-suburb corridors.</span>
+                </div>
+            </div>
+            """, unsafe_allow_html=True)
+
+    with vc2:
+        with st.container(border=True):
+            st.markdown("""
+            <div class="card-title-text">🚕 Fleet Volume Distribution Share</div>
+            <div class="card-subtitle-text">Proportional booking requests captured by each mobility tier.</div>
+            """, unsafe_allow_html=True)
+            
+            veh_counts = filtered_df['Vehicle_Type'].value_counts().reset_index()
+            veh_counts.columns = ['Vehicle_Type', 'Trips']
+            
+            fig_v_share = px.pie(
+                veh_counts,
+                names='Vehicle_Type',
+                values='Trips',
+                hole=0.68,
+                color_discrete_sequence=['#D4FF00', '#10B981', '#00F0FF', '#FFB800', '#FF3B56', '#8E929E', '#A78BFA']
+            )
+            fig_v_share.update_traces(
+                textposition='inside',
+                textinfo='percent',
+                marker=dict(line=dict(color='#0B0C10', width=3))
+            )
+            fig_v_share = apply_theme_plot(fig_v_share, height=330)
+            st.plotly_chart(fig_v_share, use_container_width=True)
+
+            st.markdown("""
+            <div class="insight-box">
+                <div class="insight-row">
+                    <span class="badge-insight">💡 One-Line Insight</span>
+                    <span class="insight-text">Demand is uniformly balanced across all 7 vehicle classes (~14.2% each), confirming high multi-modal customer adoption.</span>
+                </div>
+                <div class="insight-row">
+                    <span class="badge-recom">🎯 Business Action</span>
+                    <span class="recom-text">Maintain balanced driver supply quotas across 2-wheelers, autos, and cabs to prevent category cannibalization.</span>
+                </div>
+            </div>
+            """, unsafe_allow_html=True)
+
+    # Turnaround Time Performance
+    with st.container(border=True):
+        st.markdown("""
+        <div class="card-title-text">⏱️ Turnaround Times: Vehicle Arrival (V_TAT) vs. Customer Boarding (C_TAT)</div>
+        <div class="card-subtitle-text">Evaluating driver transit latency (V_TAT) against rider boarding speed (C_TAT) across fleets (in seconds).</div>
+        """, unsafe_allow_html=True)
+        
+        tat_summary = success_records.groupby('Vehicle_Type')[['V_TAT', 'C_TAT']].mean().reset_index()
+        fig_tat = px.bar(
+            tat_summary,
+            x='Vehicle_Type',
+            y=['V_TAT', 'C_TAT'],
+            barmode='group',
+            color_discrete_map={'V_TAT': '#D4FF00', 'C_TAT': '#FF3B56'},
+            labels={'value': 'Seconds', 'variable': 'TAT Metric', 'Vehicle_Type': 'Vehicle Category'}
+        )
+        fig_tat = apply_theme_plot(fig_tat, height=320)
+        st.plotly_chart(fig_tat, use_container_width=True)
+
+        st.markdown("""
+        <div class="insight-box">
+            <div class="insight-row">
+                <span class="badge-insight">💡 One-Line Insight</span>
+                <span class="insight-text">Vehicle arrival time (V_TAT: ~170s) is double the customer boarding time (C_TAT: ~85s), driving rider wait-time dissatisfaction.</span>
+            </div>
+            <div class="insight-row">
+                <span class="badge-recom">🎯 Business Action</span>
+                <span class="recom-text">Tighten the maximum driver dispatch radius from 4 km to 2.5 km to reduce arrival latency by an estimated 35%.</span>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+
+
+# =============================================================================
+# 3. REVENUE VIEW
+# =============================================================================
+with tab_rev:
+    rc1, rc2 = st.columns([6, 6])
+    
+    with rc1:
+        with st.container(border=True):
+            st.markdown("""
+            <div class="card-title-text">💳 Revenue Contribution by Payment Gateway</div>
+            <div class="card-subtitle-text">Completed booking revenue split across Cash, UPI, and Card channels.</div>
+            """, unsafe_allow_html=True)
+            
+            pm_rev = success_records.groupby('Payment_Method').agg(
+                Revenue=('Booking_Value', 'sum'),
+                Count=('Booking_ID', 'count')
+            ).reset_index().sort_values(by='Revenue', ascending=False)
+            
+            fig_pm = px.pie(
+                pm_rev,
+                names='Payment_Method',
+                values='Revenue',
+                hole=0.68,
+                color_discrete_sequence=['#10B981', '#D4FF00', '#00F0FF', '#A78BFA']
+            )
+            fig_pm.update_traces(
+                textposition='inside',
+                textinfo='percent',
+                marker=dict(line=dict(color='#0B0C10', width=3))
+            )
+            fig_pm = apply_theme_plot(fig_pm, height=330)
+            st.plotly_chart(fig_pm, use_container_width=True)
+
+            st.markdown("""
+            <div class="insight-box">
+                <div class="insight-row">
+                    <span class="badge-insight">💡 One-Line Insight</span>
+                    <span class="insight-text">Physical cash remains dominant at 54.9% (₹19.26M), while UPI captures 40.4% (₹14.17M) and cards represent only 4.7%.</span>
+                </div>
+                <div class="insight-row">
+                    <span class="badge-recom">🎯 Business Action</span>
+                    <span class="recom-text">Launch a ₹20 cashback incentive for switching from Cash to UPI AutoPay to eliminate in-cab change disputes and turnaround delays.</span>
+                </div>
+            </div>
+            """, unsafe_allow_html=True)
+
+    with rc2:
+        with st.container(border=True):
+            st.markdown("""
+            <div class="card-title-text">👑 Top 5 Customers by Total Booking Value</div>
+            <div class="card-subtitle-text">Top revenue-generating patrons and their completed trip spends.</div>
+            """, unsafe_allow_html=True)
+            
+            top_spenders = success_records.groupby('Customer_ID').agg(
+                Total_Spent=('Booking_Value', 'sum'),
+                Trips=('Booking_ID', 'count')
+            ).reset_index().sort_values(by='Total_Spent', ascending=True).tail(5)
+            
+            fig_top_c = px.bar(
+                top_spenders,
+                y='Customer_ID',
+                x='Total_Spent',
+                orientation='h',
+                text='Total_Spent',
+                color='Total_Spent',
+                color_continuous_scale=[[0, '#10B981'], [1, '#D4FF00']]
+            )
+            fig_top_c.update_traces(
+                texttemplate='₹%{text:,}',
+                textposition='outside',
+                marker=dict(line=dict(color='rgba(255,255,255,0.08)', width=1))
+            )
+            fig_top_c = apply_theme_plot(fig_top_c, height=330)
+            fig_top_c.update_layout(coloraxis_showscale=False)
+            st.plotly_chart(fig_top_c, use_container_width=True)
+
+            st.markdown("""
+            <div class="insight-box">
+                <div class="insight-row">
+                    <span class="badge-insight">💡 One-Line Insight</span>
+                    <span class="insight-text">Top power riders generate up to ₹6,019 over premium long-distance trips without recording any cancellation incidents.</span>
+                </div>
+                <div class="insight-row">
+                    <span class="badge-recom">🎯 Business Action</span>
+                    <span class="recom-text">Enroll top 5% revenue riders into an 'OLA Elite Pass' tier providing zero surge caps and priority vehicle allocation.</span>
+                </div>
+            </div>
+            """, unsafe_allow_html=True)
+
+    # Daily Distance & Revenue Profile
+    with st.container(border=True):
+        st.markdown("""
+        <div class="card-title-text">📍 Ride Distance Distribution Per Day (Daily Fleet Mileage vs Mean Trip KM)</div>
+        <div class="card-subtitle-text">Tracking aggregate fleet kilometers and average trip length across the month.</div>
+        """, unsafe_allow_html=True)
+        
+        daily_dist = success_records.groupby('Ride_Date').agg(
+            Total_Km=('Ride_Distance', 'sum'),
+            Avg_Km=('Ride_Distance', 'mean')
+        ).reset_index()
+        
+        fig_dual = go.Figure()
+        fig_dual.add_trace(go.Bar(
+            x=daily_dist['Ride_Date'],
+            y=daily_dist['Total_Km'],
+            name='Total Fleet Km',
+            marker=dict(color='#23252E', line=dict(color='#D4FF00', width=1))
+        ))
+        fig_dual.add_trace(go.Scatter(
+            x=daily_dist['Ride_Date'],
+            y=daily_dist['Avg_Km'],
+            name='Avg Trip Km',
+            yaxis='y2',
+            line=dict(color='#D4FF00', width=3)
+        ))
+        fig_dual = apply_theme_plot(fig_dual, height=320)
+        fig_dual.update_layout(
+            yaxis=dict(title="Total Fleet Distance (km)"),
+            yaxis2=dict(title="Average Distance (km)", overlaying='y', side='right', showgrid=False)
+        )
+        st.plotly_chart(fig_dual, use_container_width=True)
+
+        st.markdown("""
+        <div class="insight-box">
+            <div class="insight-row">
+                <span class="badge-insight">💡 One-Line Insight</span>
+                <span class="insight-text">Daily fleet distance consistently logs 32,000–35,000 km with a remarkably steady trip length mean of 15.2 km.</span>
+            </div>
+            <div class="insight-row">
+                <span class="badge-recom">🎯 Business Action</span>
+                <span class="recom-text">Structure driver fuel/EV recharge subsidies tied to completing 120+ km per shift to sustain fleet uptime.</span>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+
+
+# =============================================================================
+# 4. CANCELLATION VIEW
+# =============================================================================
+with tab_canc:
+    canc_c1, canc_c2 = st.columns(2)
+    
+    with canc_c1:
+        with st.container(border=True):
+            st.markdown("""
+            <div class="card-title-text">👤 Cancelled Rides Reasons (Customer)</div>
+            <div class="card-subtitle-text">Root cause analysis behind customer-initiated cancellations (10,499 Rides).</div>
+            """, unsafe_allow_html=True)
+            
+            c_reasons = filtered_df['Canceled_Rides_by_Customer'].dropna().value_counts().reset_index()
+            c_reasons.columns = ['Reason', 'Cancellations']
+            
+            fig_cr = px.bar(
+                c_reasons.sort_values(by='Cancellations', ascending=True),
+                y='Reason',
+                x='Cancellations',
+                orientation='h',
+                text='Cancellations',
+                color='Cancellations',
+                color_continuous_scale=[[0, '#23252E'], [1, '#FFB800']]
+            )
+            fig_cr.update_traces(texttemplate='%{text:,}', textposition='outside')
+            fig_cr = apply_theme_plot(fig_cr, height=310)
+            fig_cr.update_layout(coloraxis_showscale=False)
+            st.plotly_chart(fig_cr, use_container_width=True)
+
+            st.markdown("""
+            <div class="insight-box">
+                <div class="insight-row">
+                    <span class="badge-insight">💡 One-Line Insight</span>
+                    <span class="insight-text">30.2% of customer cancellations (3,175 rides) occur because the driver is stationary or moving away from pickup.</span>
+                </div>
+                <div class="insight-row">
+                    <span class="badge-recom">🎯 Business Action</span>
+                    <span class="recom-text">Deploy automated GPS telemetry monitors that trigger instant ride re-dispatch if a driver shows no movement for 180 seconds.</span>
+                </div>
+            </div>
+            """, unsafe_allow_html=True)
+
+    with canc_c2:
+        with st.container(border=True):
+            st.markdown("""
+            <div class="card-title-text">🚗 Cancelled Rides Reasons (Drivers)</div>
+            <div class="card-subtitle-text">Root cause analysis behind driver-initiated cancellations (18,434 Rides).</div>
+            """, unsafe_allow_html=True)
+            
+            d_reasons = filtered_df['Canceled_Rides_by_Driver'].dropna().value_counts().reset_index()
+            d_reasons.columns = ['Reason', 'Cancellations']
+            
+            fig_dr = px.bar(
+                d_reasons.sort_values(by='Cancellations', ascending=True),
+                y='Reason',
+                x='Cancellations',
+                orientation='h',
+                text='Cancellations',
+                color='Cancellations',
+                color_continuous_scale=[[0, '#23252E'], [1, '#FF3B56']]
+            )
+            fig_dr.update_traces(texttemplate='%{text:,}', textposition='outside')
+            fig_dr = apply_theme_plot(fig_dr, height=310)
+            fig_dr.update_layout(coloraxis_showscale=False)
+            st.plotly_chart(fig_dr, use_container_width=True)
+
+            st.markdown("""
+            <div class="insight-box">
+                <div class="insight-row">
+                    <span class="badge-insight">💡 One-Line Insight</span>
+                    <span class="insight-text">35.5% of driver cancellations (6,542 rides) cite 'Personal & Car related issue', signaling acute maintenance and fatigue challenges.</span>
+                </div>
+                <div class="insight-row">
+                    <span class="badge-recom">🎯 Business Action</span>
+                    <span class="recom-text">Partner with quick-service pit stop centers for express vehicle diagnostics and enforce mandatory fatigue breaks after 6 active hours.</span>
+                </div>
+            </div>
+            """, unsafe_allow_html=True)
+
+    # Incomplete Rides Breakdown
+    with st.container(border=True):
+        st.markdown("""
+        <div class="card-title-text">⚠️ Incomplete Rides Breakdown (3,926 Trips Terminated Mid-Journey)</div>
+        <div class="card-subtitle-text">Distribution of early drop-offs caused by customer demand, vehicle breakdown, and external issues.</div>
+        """, unsafe_allow_html=True)
+        
+        inc_reasons = filtered_df[filtered_df['Incomplete_Rides'] == 'Yes']['Incomplete_Rides_Reason'].value_counts().reset_index()
+        inc_reasons.columns = ['Reason', 'Count']
+        
+        in1, in2 = st.columns([5, 7])
+        with in1:
+            fig_inc_pie = px.pie(
+                inc_reasons,
+                names='Reason',
+                values='Count',
+                hole=0.68,
+                color_discrete_sequence=['#FF3B56', '#FFB800', '#D4FF00']
+            )
+            fig_inc_pie.update_traces(
+                textposition='inside',
+                textinfo='percent',
+                marker=dict(line=dict(color='#0B0C10', width=3))
+            )
+            fig_inc_pie = apply_theme_plot(fig_inc_pie, height=280)
+            st.plotly_chart(fig_inc_pie, use_container_width=True)
+            
+        with in2:
+            st.markdown("""
+            <div style="background: #0E0F14; border: 1px solid rgba(255, 59, 86, 0.25); border-left: 4px solid #FF3B56; border-radius: 12px; padding: 18px; margin-top: 15px;">
+                <h5 style="color: #FF3B56; margin: 0 0 8px 0; font-size: 0.95rem;">Impact of Mid-Trip Terminations</h5>
+                <p style="color: #CBD5E1; font-size: 0.85rem; line-height: 1.6; margin: 0;">
+                    • <b>Customer Demand (40.78% / 1,601 rides):</b> Passenger requested early exit due to severe traffic gridlock.<br>
+                    • <b>Vehicle Breakdown (40.52% / 1,591 rides):</b> Engine faults, tire punctures, and battery depletion in eBikes.<br>
+                    • <b>Other Issues (18.70% / 734 rides):</b> Route obstruction, bad weather, or fare payment disputes.
+                </p>
+            </div>
+            """, unsafe_allow_html=True)
+
+        st.markdown("""
+        <div class="insight-box">
+            <div class="insight-row">
+                <span class="badge-insight">💡 One-Line Insight</span>
+                <span class="insight-text">Vehicle breakdown caused 1,591 mid-trip trip abortions (40.52%), creating severe customer dissatisfaction and safety liability.</span>
+            </div>
+            <div class="insight-row">
+                <span class="badge-recom">🎯 Business Action</span>
+                <span class="recom-text">Mandate weekly vehicle fitness self-checks in the driver app and provide instant pro-rated refunds for passengers facing breakdowns.</span>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+
+
+# =============================================================================
+# 5. RATINGS VIEW
+# =============================================================================
+with tab_rat:
+    rat1, rat2 = st.columns(2)
+    
+    with rat1:
+        with st.container(border=True):
+            st.markdown("""
+            <div class="card-title-text">⭐ Driver Ratings Distribution</div>
+            <div class="card-subtitle-text">Scores given by passengers evaluating driver behavior and trip comfort (Citywide Avg: 4.00 / 5).</div>
+            """, unsafe_allow_html=True)
+            
+            fig_d_hist = px.histogram(
+                success_records,
+                x='Driver_Ratings',
+                nbins=20,
+                color_discrete_sequence=['#D4FF00']
+            )
+            fig_d_hist = apply_theme_plot(fig_d_hist, height=290)
+            fig_d_hist.update_layout(xaxis_title="Driver Rating Score", yaxis_title="Number of Trips")
+            st.plotly_chart(fig_d_hist, use_container_width=True)
+
+            st.markdown("""
+            <div class="insight-box">
+                <div class="insight-row">
+                    <span class="badge-insight">💡 One-Line Insight</span>
+                    <span class="insight-text">Driver ratings center tightly around 4.00, with no records below 3.0, indicating baseline service satisfaction.</span>
+                </div>
+                <div class="insight-row">
+                    <span class="badge-recom">🎯 Business Action</span>
+                    <span class="recom-text">Reward drivers maintaining ratings above 4.7 with preferred access to high-value airport pickup queues.</span>
+                </div>
+            </div>
+            """, unsafe_allow_html=True)
+
+    with rat2:
+        with st.container(border=True):
+            st.markdown("""
+            <div class="card-title-text">⭐ Customer Ratings Distribution</div>
+            <div class="card-subtitle-text">Scores given by drivers evaluating rider punctuality and conduct (Citywide Avg: 4.00 / 5).</div>
+            """, unsafe_allow_html=True)
+            
+            fig_c_hist = px.histogram(
+                success_records,
+                x='Customer_Rating',
+                nbins=20,
+                color_discrete_sequence=['#10B981']
+            )
+            fig_c_hist = apply_theme_plot(fig_c_hist, height=290)
+            fig_c_hist.update_layout(xaxis_title="Customer Rating Score", yaxis_title="Number of Trips")
+            st.plotly_chart(fig_c_hist, use_container_width=True)
+
+            st.markdown("""
+            <div class="insight-box">
+                <div class="insight-row">
+                    <span class="badge-insight">💡 One-Line Insight</span>
+                    <span class="insight-text">Customer ratings mirror driver ratings at an average of 4.00, demonstrating mutual ecosystem trust.</span>
+                </div>
+                <div class="insight-row">
+                    <span class="badge-recom">🎯 Business Action</span>
+                    <span class="recom-text">Provide priority pickup ETA discounts to riders who consistently maintain a 4.5+ star rating.</span>
+                </div>
+            </div>
+            """, unsafe_allow_html=True)
+
+    # Cross-Fleet Rating Parity
+    with st.container(border=True):
+        st.markdown("""
+        <div class="card-title-text">⚖️ Customer vs. Driver Ratings by Vehicle Category</div>
+        <div class="card-subtitle-text">Comparing passenger and driver ratings across the 7 fleet categories to identify satisfaction gaps.</div>
+        """, unsafe_allow_html=True)
+        
+        rating_comp = success_records.groupby('Vehicle_Type').agg(
+            Customer_Rating=('Customer_Rating', 'mean'),
+            Driver_Rating=('Driver_Ratings', 'mean')
+        ).reset_index()
+        
+        fig_r_comp = px.bar(
+            rating_comp,
+            x='Vehicle_Type',
+            y=['Customer_Rating', 'Driver_Rating'],
+            barmode='group',
+            color_discrete_map={'Customer_Rating': '#D4FF00', 'Driver_Rating': '#10B981'}
+        )
+        fig_r_comp = apply_theme_plot(fig_r_comp, height=320)
+        fig_r_comp.update_layout(yaxis=dict(range=[3.5, 4.3], title="Rating (Out of 5)"))
+        st.plotly_chart(fig_r_comp, use_container_width=True)
+
+        st.markdown("""
+        <div class="insight-box">
+            <div class="insight-row">
+                <span class="badge-insight">💡 One-Line Insight</span>
+                <span class="insight-text">Rating parity is exceptionally stable across all vehicle types (3.99 to 4.01), showing uniform quality regardless of vehicle tier.</span>
+            </div>
+            <div class="insight-row">
+                <span class="badge-recom">🎯 Business Action</span>
+                <span class="recom-text">Maintain current vehicle onboarding quality benchmarks and expand premium Prime Plus perks to raise satisfaction toward 4.5.</span>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+
+
+# =============================================================================
+# 6. SQL QUERY STUDIO & WORKBENCH
 # =============================================================================
 with tab_sql:
     sql_tab_pre, sql_tab_custom = st.tabs(["📋 Predefined Questions (1 to 10)", "✍️ Live SQL Terminal"])
@@ -1491,7 +1351,7 @@ LIMIT 10;"""
 
 
 # =============================================================================
-# TAB 3: GEOSPATIAL & ROUTE FLOW (WITH INSIGHTS UNDER GRAPHS)
+# 7. GEOSPATIAL & ROUTE FLOW
 # =============================================================================
 with tab_geo:
     g1, g2 = st.columns(2)
@@ -1499,10 +1359,7 @@ with tab_geo:
     with g1:
         with st.container(border=True):
             st.markdown("""
-            <div class="card-header-flex">
-                <div class="card-title-text">📍 Top 10 Origin Nodes (Highest Ride Requests)</div>
-                <span class="kpi-mini-pill">Pickup Hotspots</span>
-            </div>
+            <div class="card-title-text">📍 Top 10 Origin Nodes (Highest Ride Requests)</div>
             <div class="card-subtitle-text">Urban origins generating the largest volume of commuter dispatch requests.</div>
             """, unsafe_allow_html=True)
             
@@ -1523,7 +1380,6 @@ with tab_geo:
             fig_origin.update_layout(coloraxis_showscale=False)
             st.plotly_chart(fig_origin, use_container_width=True)
 
-            # Mandatory Insight & Recommendation under Graph 16
             st.markdown("""
             <div class="insight-box">
                 <div class="insight-row">
@@ -1540,10 +1396,7 @@ with tab_geo:
     with g2:
         with st.container(border=True):
             st.markdown("""
-            <div class="card-header-flex">
-                <div class="card-title-text">🏁 Top 10 Destination Hubs (Highest Traffic Flow)</div>
-                <span class="kpi-mini-pill">Drop-off Corridors</span>
-            </div>
+            <div class="card-title-text">🏁 Top 10 Destination Hubs (Highest Traffic Flow)</div>
             <div class="card-subtitle-text">High-inflow commercial and residential destinations attracting daily arrivals.</div>
             """, unsafe_allow_html=True)
             
@@ -1564,7 +1417,6 @@ with tab_geo:
             fig_dest.update_layout(coloraxis_showscale=False)
             st.plotly_chart(fig_dest, use_container_width=True)
 
-            # Mandatory Insight & Recommendation under Graph 17
             st.markdown("""
             <div class="insight-box">
                 <div class="insight-row">
@@ -1581,10 +1433,7 @@ with tab_geo:
     # Top O-D Route Corridors
     with st.container(border=True):
         st.markdown("""
-        <div class="card-header-flex">
-            <div class="card-title-text">🔁 High-Traffic Route Corridors (Origin ➡️ Destination)</div>
-            <span class="kpi-mini-pill">Top Commuter Pairs</span>
-        </div>
+        <div class="card-title-text">🔁 High-Traffic Route Corridors (Origin ➡️ Destination)</div>
         <div class="card-subtitle-text">Most frequently travelled point-to-point transit pairs across Bengaluru.</div>
         """, unsafe_allow_html=True)
         
@@ -1598,14 +1447,14 @@ with tab_geo:
 
 
 # =============================================================================
-# TAB 4: RAW DATA EXPLORER
+# 8. RAW DATA EXPLORER
 # =============================================================================
 with tab_raw:
     with st.container(border=True):
         st.markdown(f"""
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
             <div class="card-title-text">🔍 Raw Data Explorer & Export Engine</div>
-            <span class="kpi-mini-pill" style="color: #10B981;">{len(filtered_df):,} Records in Active Scope</span>
+            <span style="color: #10B981; font-weight: 700; font-size: 0.82rem;">{len(filtered_df):,} Records in Active Scope</span>
         </div>
         """, unsafe_allow_html=True)
         
@@ -1626,76 +1475,3 @@ with tab_raw:
             file_name="ola_filtered_export.csv",
             mime="text/csv"
         )
-
-
-# =============================================================================
-# TAB 5: STRATEGIC BUSINESS PLAYBOOK
-# =============================================================================
-with tab_biz:
-    b1, b2 = st.columns(2)
-    
-    with b1:
-        with st.container(border=True):
-            st.markdown("""
-            <div style="display: inline-block; background: rgba(212,255,0,0.15); color: #D4FF00; font-size: 0.72rem; font-weight: 800; text-transform: uppercase; padding: 3px 10px; border-radius: 20px; margin-bottom: 10px;">
-                Supply Rebalancing & Surge Pricing
-            </div>
-            <h4 style="color: #FFFFFF; margin: 0 0 10px 0; font-size: 1.1rem;">1. Bridge the 9.8% 'Driver Not Found' Gap</h4>
-            <p style="color: #CBD5E1; font-size: 0.86rem; line-height: 1.7; margin: 0;">
-                <b>Empirical Finding:</b> 10,124 bookings went completely unfulfilled due to <i>'Driver Not Found'</i>, representing over ₹5.5M in lost gross merchandise value.<br><br>
-                <b>Actionable Protocol:</b>
-                <ul style="color: #8E929E; padding-left: 18px; margin-top: 6px;">
-                    <li>Implement algorithmic rebalancing dispatch: incentivize idle cabs from low-demand sectors to relocate to Banashankari & Yeshwanthpur prior to evening rush (17:00).</li>
-                    <li>Activate dynamic micro-surge multipliers (1.15x - 1.25x) during the 18:00 - 21:00 peak to expand active driver supply.</li>
-                </ul>
-            </p>
-            """, unsafe_allow_html=True)
-
-        with st.container(border=True):
-            st.markdown("""
-            <div style="display: inline-block; background: rgba(255,59,86,0.15); color: #FF3B56; font-size: 0.72rem; font-weight: 800; text-transform: uppercase; padding: 3px 10px; border-radius: 20px; margin-bottom: 10px;">
-                Driver Attrition Mitigation
-            </div>
-            <h4 style="color: #FFFFFF; margin: 0 0 10px 0; font-size: 1.1rem;">2. Driver Cancellation Reduction Playbook</h4>
-            <p style="color: #CBD5E1; font-size: 0.86rem; line-height: 1.7; margin: 0;">
-                <b>Empirical Finding:</b> Drivers initiated 18,434 cancellations (17.89% of all rides), with 35.5% citing <i>'Personal & Car related issue'</i>.<br><br>
-                <b>Actionable Protocol:</b>
-                <ul style="color: #8E929E; padding-left: 18px; margin-top: 6px;">
-                    <li>Establish rapid pit-stop vehicle maintenance facilities near top drop-off zones to resolve mechanical issues.</li>
-                    <li>Introduce trip streak completion incentives: drivers who complete 6 consecutive rides without voluntary cancellation earn 15% bonus fare.</li>
-                </ul>
-            </p>
-            """, unsafe_allow_html=True)
-
-    with b2:
-        with st.container(border=True):
-            st.markdown("""
-            <div style="display: inline-block; background: rgba(0,240,255,0.15); color: #00F0FF; font-size: 0.72rem; font-weight: 800; text-transform: uppercase; padding: 3px 10px; border-radius: 20px; margin-bottom: 10px;">
-                Passenger Retention
-            </div>
-            <h4 style="color: #FFFFFF; margin: 0 0 10px 0; font-size: 1.1rem;">3. Live Movement Tracking & Anti-Wait Friction</h4>
-            <p style="color: #CBD5E1; font-size: 0.86rem; line-height: 1.7; margin: 0;">
-                <b>Empirical Finding:</b> 30.2% of customer cancellations (3,175 rides) occurred because the driver was stationary or moving away from pickup.<br><br>
-                <b>Actionable Protocol:</b>
-                <ul style="color: #8E929E; padding-left: 18px; margin-top: 6px;">
-                    <li>Deploy proactive stationary alerts: if a driver shows zero GPS displacement for 180 seconds after accepting, prompt driver and alert rider with re-dispatch option.</li>
-                    <li>Provide transparent live traffic-adjusted ETA countdowns to curb anxiety cancellations.</li>
-                </ul>
-            </p>
-            """, unsafe_allow_html=True)
-
-        with st.container(border=True):
-            st.markdown("""
-            <div style="display: inline-block; background: rgba(255,184,0,0.15); color: #FFB800; font-size: 0.72rem; font-weight: 800; text-transform: uppercase; padding: 3px 10px; border-radius: 20px; margin-bottom: 10px;">
-                Fintech Acceleration
-            </div>
-            <h4 style="color: #FFFFFF; margin: 0 0 10px 0; font-size: 1.1rem;">4. Digital Settlement & UPI AutoPay Push</h4>
-            <p style="color: #CBD5E1; font-size: 0.86rem; line-height: 1.7; margin: 0;">
-                <b>Empirical Finding:</b> Cash still commands 54.9% (₹19.26M) of settled revenue, creating change disputes and end-of-trip delays.<br><br>
-                <b>Actionable Protocol:</b>
-                <ul style="color: #8E929E; padding-left: 18px; margin-top: 6px;">
-                    <li>Incentivize UPI AutoPay setup with ₹25 instant cashback on the first 3 digital rides.</li>
-                    <li>Target shifting digital transaction share from 45.1% to > 70% within two quarters.</li>
-                </ul>
-            </p>
-            """, unsafe_allow_html=True)
