@@ -1,10 +1,12 @@
 # 🚖 OLA Ride Insights - Mobility & Ride-Sharing Intelligence Platform
 
-[![Python](https://img.shields.io/badge/Python-3.12-blue.svg)](https://www.python.org/)
-[![Streamlit](https://img.shields.io/badge/Streamlit-1.63-FF4B4B.svg)](https://streamlit.io/)
-[![SQLite](https://img.shields.io/badge/SQLite-3.0-003B57.svg)](https://www.sqlite.org/)
-[![PowerBI](https://img.shields.io/badge/Power_BI-Desktop-F2C811.svg)](https://powerbi.microsoft.com/)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Live App](https://img.shields.io/badge/Streamlit_App-Live_Demo-FF4B4B?style=for-the-badge&logo=streamlit)](https://ola-ride-insights-pravatsahu05.streamlit.app/)
+[![GitHub Repo](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github)](https://github.com/pravatsahu05/OLA-Ride-Insights)
+[![Python](https://img.shields.io/badge/Python-3.12-3776AB?style=for-the-badge&logo=python)](https://www.python.org/)
+[![PowerBI](https://img.shields.io/badge/Power_BI-Desktop-F2C811?style=for-the-badge&logo=powerbi)](https://powerbi.microsoft.com/)
+
+> **🌐 Live Interactive Application:** [https://ola-ride-insights-pravatsahu05.streamlit.app/](https://ola-ride-insights-pravatsahu05.streamlit.app/)  
+> **💻 GitHub Source Repository:** [https://github.com/pravatsahu05/OLA-Ride-Insights](https://github.com/pravatsahu05/OLA-Ride-Insights)
 
 An enterprise-grade business intelligence and data analytics platform built for **OLA Ride Insights**. This project explores **103,024 ride bookings** across Bengaluru (July 2024), extracting actionable mobility intelligence to optimize driver allocation, reduce trip cancellations, analyze revenue channels, and enhance passenger satisfaction.
 
