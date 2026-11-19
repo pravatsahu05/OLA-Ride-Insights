@@ -208,3 +208,4 @@ def get_executive_kpis(db_file=None):
         "avg_customer_rating": float(df['Avg_Customer_Rating'].iloc[0]),
         "avg_driver_rating": float(df['Avg_Driver_Rating'].iloc[0])
     }
+

@@ -314,3 +314,4 @@ with open("notebooks/eda_analysis.ipynb", "w", encoding="utf-8") as f:
     json.dump(notebook, f, indent=2)
 
 print("notebooks/eda_analysis.ipynb created successfully!")
+

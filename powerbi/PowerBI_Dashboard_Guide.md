@@ -138,3 +138,4 @@ This document provides complete instructions to connect, model, and build the 5-
 
 ## 5. Embed in Streamlit Application
 The Streamlit application replicates this entire interactive Power BI dashboard with Plotly charts, native filters, KPI counters, and SQL query explorers, providing the complete analytics experience!
+

@@ -233,3 +233,4 @@ FROM rides
 WHERE Incomplete_Rides = 'Yes'
 GROUP BY Incomplete_Rides_Reason
 ORDER BY Total_Incomplete_Rides DESC;
+
