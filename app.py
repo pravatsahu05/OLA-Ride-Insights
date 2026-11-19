@@ -3,7 +3,7 @@
 OLA RIDE INSIGHTS - ADVANCED MOBILITY CONTROL CENTER
 Theme: Dark Obsidian & Electric Volt Neon Lime (#D4FF00) matching Next-Gen Mobility UI
 Features: Clean, interactive dashboard without unclickable pseudo-buttons,
-flattened navigation for instant access, and dedicated one-line insights & business actions under every visual.
+flattened navigation for instant access, and dedicated insights & business actions under every visual.
 =============================================================================
 """
 
@@ -634,7 +634,7 @@ with tab_overall:
             st.markdown("""
             <div class="insight-box">
                 <div class="insight-row">
-                    <span class="badge-insight">💡 One-Line Insight</span>
+                    <span class="badge-insight">💡 Insight</span>
                     <span class="insight-text">Daily demand maintains a steady pace of ~3,320 rides/day, but approximately 1,260 trips fail daily due to cancellations and driver shortages.</span>
                 </div>
                 <div class="insight-row">
@@ -680,7 +680,7 @@ with tab_overall:
             st.markdown("""
             <div class="insight-box">
                 <div class="insight-row">
-                    <span class="badge-insight">💡 One-Line Insight</span>
+                    <span class="badge-insight">💡 Insight</span>
                     <span class="insight-text">Success rate stands at 62.09%, while driver-initiated cancellations (17.89%) constitute the single largest friction factor.</span>
                 </div>
                 <div class="insight-row">
@@ -717,7 +717,7 @@ with tab_overall:
             st.markdown("""
             <div class="insight-box">
                 <div class="insight-row">
-                    <span class="badge-insight">💡 One-Line Insight</span>
+                    <span class="badge-insight">💡 Insight</span>
                     <span class="insight-text">Demand spikes sharply during the 17:00–21:00 evening commute, where 'Driver Not Found' events increase by 42%.</span>
                 </div>
                 <div class="insight-row">
@@ -759,7 +759,7 @@ with tab_overall:
             st.markdown("""
             <div class="insight-box">
                 <div class="insight-row">
-                    <span class="badge-insight">💡 One-Line Insight</span>
+                    <span class="badge-insight">💡 Insight</span>
                     <span class="insight-text">Tuesdays (16,926 rides) and Mondays (16,729) generate the highest mobility traffic, while weekend demand stabilizes at ~13,200.</span>
                 </div>
                 <div class="insight-row">
@@ -811,7 +811,7 @@ with tab_veh:
             st.markdown("""
             <div class="insight-box">
                 <div class="insight-row">
-                    <span class="badge-insight">💡 One-Line Insight</span>
+                    <span class="badge-insight">💡 Insight</span>
                     <span class="insight-text">Prime Sedan (15.76 km) and eBike (15.58 km) serve long commuter trips, while Auto operates strictly as short urban transit (6.24 km).</span>
                 </div>
                 <div class="insight-row">
@@ -849,7 +849,7 @@ with tab_veh:
             st.markdown("""
             <div class="insight-box">
                 <div class="insight-row">
-                    <span class="badge-insight">💡 One-Line Insight</span>
+                    <span class="badge-insight">💡 Insight</span>
                     <span class="insight-text">Demand is uniformly balanced across all 7 vehicle classes (~14.2% each), confirming high multi-modal customer adoption.</span>
                 </div>
                 <div class="insight-row">
@@ -881,7 +881,7 @@ with tab_veh:
         st.markdown("""
         <div class="insight-box">
             <div class="insight-row">
-                <span class="badge-insight">💡 One-Line Insight</span>
+                <span class="badge-insight">💡 Insight</span>
                 <span class="insight-text">Vehicle arrival time (V_TAT: ~170s) is double the customer boarding time (C_TAT: ~85s), driving rider wait-time dissatisfaction.</span>
             </div>
             <div class="insight-row">
@@ -928,7 +928,7 @@ with tab_rev:
             st.markdown("""
             <div class="insight-box">
                 <div class="insight-row">
-                    <span class="badge-insight">💡 One-Line Insight</span>
+                    <span class="badge-insight">💡 Insight</span>
                     <span class="insight-text">Physical cash remains dominant at 54.9% (₹19.26M), while UPI captures 40.4% (₹14.17M) and cards represent only 4.7%.</span>
                 </div>
                 <div class="insight-row">
@@ -971,7 +971,7 @@ with tab_rev:
             st.markdown("""
             <div class="insight-box">
                 <div class="insight-row">
-                    <span class="badge-insight">💡 One-Line Insight</span>
+                    <span class="badge-insight">💡 Insight</span>
                     <span class="insight-text">Top power riders generate up to ₹6,019 over premium long-distance trips without recording any cancellation incidents.</span>
                 </div>
                 <div class="insight-row">
@@ -1017,7 +1017,7 @@ with tab_rev:
         st.markdown("""
         <div class="insight-box">
             <div class="insight-row">
-                <span class="badge-insight">💡 One-Line Insight</span>
+                <span class="badge-insight">💡 Insight</span>
                 <span class="insight-text">Daily fleet distance consistently logs 32,000–35,000 km with a remarkably steady trip length mean of 15.2 km.</span>
             </div>
             <div class="insight-row">
@@ -1061,7 +1061,7 @@ with tab_canc:
             st.markdown("""
             <div class="insight-box">
                 <div class="insight-row">
-                    <span class="badge-insight">💡 One-Line Insight</span>
+                    <span class="badge-insight">💡 Insight</span>
                     <span class="insight-text">30.2% of customer cancellations (3,175 rides) occur because the driver is stationary or moving away from pickup.</span>
                 </div>
                 <div class="insight-row">
@@ -1098,7 +1098,7 @@ with tab_canc:
             st.markdown("""
             <div class="insight-box">
                 <div class="insight-row">
-                    <span class="badge-insight">💡 One-Line Insight</span>
+                    <span class="badge-insight">💡 Insight</span>
                     <span class="insight-text">35.5% of driver cancellations (6,542 rides) cite 'Personal & Car related issue', signaling acute maintenance and fatigue challenges.</span>
                 </div>
                 <div class="insight-row">
@@ -1150,7 +1150,7 @@ with tab_canc:
         st.markdown("""
         <div class="insight-box">
             <div class="insight-row">
-                <span class="badge-insight">💡 One-Line Insight</span>
+                <span class="badge-insight">💡 Insight</span>
                 <span class="insight-text">Vehicle breakdown caused 1,591 mid-trip trip abortions (40.52%), creating severe customer dissatisfaction and safety liability.</span>
             </div>
             <div class="insight-row">
@@ -1187,7 +1187,7 @@ with tab_rat:
             st.markdown("""
             <div class="insight-box">
                 <div class="insight-row">
-                    <span class="badge-insight">💡 One-Line Insight</span>
+                    <span class="badge-insight">💡 Insight</span>
                     <span class="insight-text">Driver ratings center tightly around 4.00, with no records below 3.0, indicating baseline service satisfaction.</span>
                 </div>
                 <div class="insight-row">
@@ -1217,7 +1217,7 @@ with tab_rat:
             st.markdown("""
             <div class="insight-box">
                 <div class="insight-row">
-                    <span class="badge-insight">💡 One-Line Insight</span>
+                    <span class="badge-insight">💡 Insight</span>
                     <span class="insight-text">Customer ratings mirror driver ratings at an average of 4.00, demonstrating mutual ecosystem trust.</span>
                 </div>
                 <div class="insight-row">
@@ -1253,7 +1253,7 @@ with tab_rat:
         st.markdown("""
         <div class="insight-box">
             <div class="insight-row">
-                <span class="badge-insight">💡 One-Line Insight</span>
+                <span class="badge-insight">💡 Insight</span>
                 <span class="insight-text">Rating parity is exceptionally stable across all vehicle types (3.99 to 4.01), showing uniform quality regardless of vehicle tier.</span>
             </div>
             <div class="insight-row">
@@ -1383,7 +1383,7 @@ with tab_geo:
             st.markdown("""
             <div class="insight-box">
                 <div class="insight-row">
-                    <span class="badge-insight">💡 One-Line Insight</span>
+                    <span class="badge-insight">💡 Insight</span>
                     <span class="insight-text">Banashankari (2,201 requests), Yeshwanthpur (2,139), and RT Nagar (2,135) generate the highest origin passenger flow.</span>
                 </div>
                 <div class="insight-row">
@@ -1420,7 +1420,7 @@ with tab_geo:
             st.markdown("""
             <div class="insight-box">
                 <div class="insight-row">
-                    <span class="badge-insight">💡 One-Line Insight</span>
+                    <span class="badge-insight">💡 Insight</span>
                     <span class="insight-text">Drop-off destinations match origin volumes closely, demonstrating high bidirectional commuter travel across IT and commercial sectors.</span>
                 </div>
                 <div class="insight-row">
